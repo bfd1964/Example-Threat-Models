@@ -1,0 +1,2580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library ref="mitre-d3fend" name="Mitre-D3fend" revision="1" tags="">
+  <desc>Quick and dirty ingestion of the mitre defend technique tree from https://d3fend.mitre.org/resources</desc>
+  <categoryComponents>
+    <categoryComponent ref="custom-client-side" name="Custom-Client-side"/>
+  </categoryComponents>
+  <componentDefinitions>
+    <componentDefinition ref="custom-web-ui" name="Custom Web UI" desc="" categoryRef="custom-client-side">
+      <riskPatterns>
+        <riskPattern ref="d3fend-tactic"/>
+      </riskPatterns>
+    </componentDefinition>
+  </componentDefinitions>
+  <supportedStandards/>
+  <riskPatterns>
+    <riskPattern uuid="2baf602a-976b-4191-9096-f52a1bff35e9" ref="d3fend-tactic" name="D3fend Tactic" desc="">
+      <tags/>
+      <weaknesses>
+        <weakness ref="D3-CA" name="Certificate Analysis" state="0" impact="100">
+          <desc/>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:02:29.491">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </weakness>
+        <weakness ref="D3-DNSDL" name="DNS Denylisting" state="0" impact="100">
+          <desc/>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:42:26.985">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </weakness>
+        <weakness ref="D3-FV" name="Firmware Verification" state="0" impact="100">
+          <desc/>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:16:32.426">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </weakness>
+        <weakness ref="D3-KBPA" name="Kernel-based Process Isolation" state="0" impact="100">
+          <desc/>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:40:01.750">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </weakness>
+        <weakness ref="D3-OSM" name="Operating System Monitoring" state="0" impact="100">
+          <desc/>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:17:38.537">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </weakness>
+        <weakness ref="D3-PSA" name="Process Spawn Analysis" state="0" impact="100">
+          <desc/>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:27:26.280">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </weakness>
+        <weakness ref="D3-SCA" name="System Call Analysis" state="0" impact="100">
+          <desc/>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:28:52.833">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </weakness>
+      </weaknesses>
+      <countermeasures>
+        <countermeasure ref="D3-ACA" name="Active Certificate Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Actively collecting PKI certificates by connecting to the server and downloading its server certificates for analysis.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:02:54.791">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-ACH" name="Application Configuration Hardening" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Modifying an application's configuration to reduce its attack surface.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:03:19.133">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-AL" name="Account Locking" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;The process of temporarily disabling user accounts on a system or domain.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:17:45.736">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-ANCI" name="Authentication Cache Invalidation" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Removing tokens or credentials from an authentication cache to prevent further user associated account accesses.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:18:22.907">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-ANET" name="Authentication Event Thresholding" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Collecting authentication events, creating a baseline user profile, and determining whether authentication events are consistent with the baseline profile.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:33:18.601">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-AZET" name="Authorization Event Thresholding" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Collecting authorization events, creating a baseline user profile, and determining whether authorization events are consistent with the baseline profile.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:33:54.710">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-BA" name="Bootloader Authentication" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font size="4"&gt;Cryptographically authenticating the bootloader software before system boot.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T15:39:13.533">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-BAN" name="Biometric Authenication" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font size="4"&gt;Using biological measures in order to authenticate a user.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T15:31:45.004">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-BDI" name="Broadcast Domain Isolation" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Broadcast isolation restricts the number of computers a host can contact on their LAN.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:41:30.223">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-BSE" name="Byte Sequence Emulation" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Analyzing sequences of bytes and determining if they likely represent malicious shellcode.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:01:45.840">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-CA" name="Certificate Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Detection of unauthorized use of administrative network protocols by analyzing network activity against a baseline.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:01:16.517">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-CAA" name="Connection Attempt Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Analyzing failed connections in a network to detect unauthorized activity.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:04:19.485">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-CBAN" name="Certificate-based Authentication" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font size="4"&gt;Requiring a digital certificate in order to authenticate a user.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T15:32:12.439">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-CCSA" name="Credential Compromise Scope Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Determining which credentials may have been compromised by analyzing the user logon history of a particular system.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:34:23.060">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-CHN" name="Connected Honeynet" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;A decoy service, system, or environment, that is connected to the enterprise network, and simulates or emulates certain functionality to the network, without exposing full access to a production system.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:20:32.207">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-CP" name="Certificate Pinning" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font size="4"&gt;Persisting either a server's X509 certificate or their public key and comparing that to server's presented identity to allow for greater client confidence in the remote server's identity for SSL connections.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T15:32:40.281">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-CSPP" name="Client-server Payload Profiling" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Comparing client-server request and response payloads to a baseline profile to identify outliers.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:03:45.628">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-CTS" name="Credential Transmission Scoping" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font size="4"&gt;Limiting the transmission of a credential to a scoped set of relying parties.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T15:34:27.439">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-DA" name="Dynamic Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Executing or opening a file in a synthetic "sandbox" environment to determine if the file is a malicious program or if the file exploits another program such as a document reader.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:35:49.837">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-DAM" name="Domain Account Monitoring" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Monitoring the existence of or changes to Domain User Accounts.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:34:46.764">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-DCE" name="Dead Code Elimination" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Removing unreachable or "dead code" from compiled source code.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:08:28.825">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-DENCR" name="Disk Encryption" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font size="4"&gt;Encrypting a hard disk partition to prevent cleartext access to a file system.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T15:39:44.820">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-DLIC" name="Driver Load Integrity Checking" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font size="4"&gt;Ensuring the integrity of drivers loaded during initialization of the operating system.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T15:40:14.727">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-DNF" name="Decoy File" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;A file created for the purposes of deceiving an adversary.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:23:38.818">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-DNR" name="Decoy Network Resource" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Deploying a network resource for the purposes of deceiving an adversary.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:24:19.718">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-DNSAL" name="DNS Allowlisting" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Permitting only approved domains and their subdomains to be resolved.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:42:06.341">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-DNSTA" name="DNS Traffic Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;/p&gt; 
+&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Analysis of domain name metadata, including name and DNS records, to determine whether the domain is likely to resolve to an undesirable host.&lt;/font&gt;&lt;/p&gt; 
+&lt;br&gt; 
+&lt;p&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:04:47.315">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-DP" name="Decoy Persona" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Establishing a fake online identity to misdirect, deceive, and or interact with adversaries.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:24:49.220">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-DPR" name="Decoy Public Release" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Issuing publicly released media to deceive adversaries.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:25:18.170">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-DQSA" name="Database Query String Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Analyzing database queries to detect [SQL Injection](&lt;a href="https://capec.mitre.org/data/definitions/66.html" target="_blank"&gt;&lt;font style="font-variant-ligatures: common-ligatures"&gt;&lt;u&gt;https://capec.mitre.org/data/definitions/66.html&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;).&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references>
+            <reference name="CAPEC 66" url="https://capec.mitre.org/data/definitions/66.html"/>
+          </references>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:24:53.148">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-DST" name="Decoy Session Token" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;An authentication token created for the purposes of deceiving an adversary.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:25:48.020">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-DTF" name="Outbound Traffic Filtering" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Restricting network traffic originating from a private host or enclave destined towards untrusted networks.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:46:50.101">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-DTP" name="Domain Trust Policy" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font size="4"&gt;Restricting inter-domain trust by modifying domain configuration.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T15:35:06.298">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-DUC" name="Decoy User Credential" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;A Credential created for the purpose of deceiving an adversary.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:26:28.088">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-EA" name="Executable Allowlisting" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Using a digital signature to authenticate a file before opening.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:38:06.143">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-ED" name="Executable Denylisting" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Blocking the execution of files on a host in accordance with defined application policy rules.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:38:31.598">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-EFA" name="Emulated File Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Emulating instructions in a file looking for specific patterns.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:36:12.075">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-EHB" name="Endpoint Health Beacon" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Monitoring the security status of an endpoint by sending periodic messages with health status, where absence of a response may indicate that the endpoint has been compromised.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:17:59.344">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-EHPV" name="Exception Handler Pointer Validation" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Validates that a referenced exception handler pointer is a valid exception handler.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:08:58.724">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-ET" name="Encrypted Tunnels" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Encrypted encapsulation of routable network traffic.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:46:06.823">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-FAPA" name="File Access Pattern Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Analyzing the files accessed by a process to identify unauthorized activity.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:25:50.727">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-FBA" name="Firmware Behavior Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Analyzing the behavior of embedded code in firmware and looking for anomalous behavior and suspicious activity.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:15:46.985">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-FC" name="File Carving" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Identifying and extracting files from network application protocols through the use of network stream reassembly software.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:05:08.462">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-FCA" name="File Creation Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc/>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:29:09.958">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-FCR" name="File Content Rules" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Employing a pattern matching rule language to analyze files.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:37:01.657">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-FE" name="File Encryption" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font size="4"&gt;Encrypting a file using a cryptographic key.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T15:41:01.603">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-FEMC" name="Firmware Embedded Monitoring Code" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Monitoring code is injected into firmware for integrity monitoring of firmware and firmware data.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:16:14.008">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-FH" name="File Hashing" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Employing file hash comparisons to detect known malware.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:37:23.734">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-FRDD" name="Forward Resolution Domain Denylisting" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc/>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:43:05.868">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-FRDDL" name="Hierarchical Domain Denylisting" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Blocking the resolution of any subdomain of a specified domain name.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:43:30.057">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-FRIDL" name="Forward Resolution IP Denylisting" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Blocking a DNS lookup's answer's IP address value.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:44:31.310">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-HBPI" name="Hardware-based Process Isolation" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Preventing one process from writing to the memory space of another process through hardware based address manager implementations.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:39:08.233">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-HD" name="Homoglyph Detection" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Comparing strings using a variety of techniques to determine if a deceptive or malicious string is being presented to a user.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:30:24.449">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-HDL" name="Homoglyph Denylisting" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Blocking DNS queries that are deceptively similar to legitimate domain names.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:44:06.576">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-IBCA" name="Indirect Branch Call Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Analyzing vendor specific branch call recording in order to detect ROP style attacks.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:26:13.092">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-IDA" name="Input Device Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Operating system level mechanisms to prevent abusive input device exploitation.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:18:24.228">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-IHN" name="Integrated Honeynet" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;The practice of setting decoys in a production environment to entice interaction from attackers.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:21:06.160">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-IPCTA" name="IPC Traffic Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Analyzing standard inter process communication (IPC) protocols to detect deviations from normal protocol activity.&lt;/font&gt;&lt;/p&gt; 
+&lt;br&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:05:58.362">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-IPR" name="IO Port Restriction" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Limiting access to computer input/output (IO) ports to restrict unauthorized devices.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:39:39.723">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-ISVA" name="Inbound Session Volume Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Analyzing inbound network session or connection attempt volume.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:05:30.584">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-ITF" name="Inbound Traffic Filtering" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Restricting network traffic originating from untrusted networks destined towards a private host or enclave.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:46:29.949">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-JFAPA" name="Job Function Access Pattern Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Detecting anomalies in user access patterns by comparing user access activity to behavioral profiles that categorize users by role such as job title, function, department.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:35:16.683">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-LAM" name="Local Account Monitoring" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Analyzing local user accounts to detect unauthorized activity.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:35:44.213">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-LFP" name="Local File Permissions" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Restricting access to a local file by configuring operating system functionality.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T15:59:05.709">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-MAC" name="Mandatory Access Control" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Controlling access to local computer system resources with kernel-level capabilities.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:40:24.815">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-MAN" name="Message Authentication" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font size="4"&gt;Authenticating the sender of a message and ensuring message integrity.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T15:26:53.661">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-MBT" name="Memory Boundary Tracking" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Analyzing a call stack for return addresses which point to unexpected&lt;span class="Apple-converted-space" style=""&gt;&amp;nbsp; &lt;/span&gt;memory locations.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:18:53.308">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-MENCR" name="Message Encryption" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font size="4"&gt;Encrypting a message body using a cryptographic key.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T15:28:17.631">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-MFA" name="Multi-factor Authentication" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font size="4"&gt;Requiring proof of two or more pieces of evidence in order to authenticate a user.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T15:35:40.013">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-NTCD" name="Network Traffic Community Deviation" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Establishing baseline communities of network hosts and identifying statistically divergent inter-community communication.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:06:26.617">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-OTP" name="One-time Password" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font size="4"&gt;A one-time password is valid for only one user authentication.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T15:36:21.211">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-PAN" name="Pointer Authentication" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Comparing the cryptographic hash or derivative of a pointer's value to an expected value.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:09:31.030">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-PCA" name="Passive Certificate Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Collecting host certificates from network traffic or other passive sources like a certificate transparency log and analyzing them for unauthorized activity.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:03:19.160">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-PCSV" name="Process Code Segment Verification" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Comparing the "text" or "code" memory segments to a source of truth.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:26:46.740">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-PFV" name="Peripheral Firmware Verification" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Cryptographically verifying peripheral firmware integrity.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:16:53.558">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-PHDURA" name="Per Host Download-Upload Ratio Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Detecting anomalies that indicate malicious activity by comparing the amount of data downloaded versus data uploaded by a host.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:07:37.764">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-PLA" name="Process Lineage Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Identification of suspicious processes executing on an end-point device by examining the ancestry and siblings of a process, and the associated metadata of each node on the tree, such as process execution, duration, and order relative to siblings and ancestors.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:27:50.420">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-PMAD" name="Protocol Metadata Anomaly Detection" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Collecting network communication protocol metadata and identifying statistical outliers.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:08:02.271">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-PSEP" name="Process Segment Execution Prevention" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Preventing execution of any address in a memory region other than the code segment.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:10:03.189">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-PSMD" name="Process Self-Modification Detection" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Detects processes that modify, change, or replace their own code at runtime.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:27:10.641">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-PT" name="Process Termination" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Terminating a running application process on a computer system.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:19:19.282">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-RAPA" name="Resource Access Pattern Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Analyzing the resources accessed by a user to identify unauthorized activity.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:36:39.231">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-RFS" name="RF Shielding" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font size="4"&gt;Adding physical barriers to a platform to prevent undesired radio interference.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T15:59:53.851">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-RPA" name="Relay Pattern Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;The detection of an internal host relaying traffic between the internal network and the external network.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:08:44.925">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-RRDD" name="Reverse Resolution Domain Denylisting" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Blocking a reverse DNS lookup's answer's domain name value.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:44:58.739">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-RRID" name="Reverse Resolution IP Denylisting" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Blocking a reverse lookup based on the query's IP address value.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:45:49.165">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-RTA" name="RPC Traffic Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Monitoring the activity of remote procedure calls in communication traffic to establish standard protocol operations and potential attacker activities.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:14:14.308">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-RTSD" name="Remote Terminal Session Detection" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Detection of an unauthorized remote live terminal console session by examining network traffic to a network host.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:09:15.432">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-SAOR" name="Segment Address Offset Randomization" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Randomizing the base (start) address of one or more segments of memory during the initialization of a process.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:14:44.580">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-SBV" name="Service Binary Verification" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Analyzing changes in service binary files by comparing to a source of truth.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:22:35.067">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-SCF" name="System Call Filtering" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Configuring a kernel to use an allow or deny list to filter kernel api calls.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:40:49.134">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-SCP" name="System Configuration Permissions" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Restricting system configuration modifications to a specific user or group of users.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:01:30.849">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-SDA" name="Session Duration Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Analyzing the duration of user sessions in order to detect unauthorized&lt;span class="Apple-converted-space" style=""&gt;&amp;nbsp; &lt;/span&gt;activity.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:37:03.271">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-SDM" name="System Daemon Monitoring" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Tracking changes to the state or configuration of critical system level processes.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:21:08.726">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-SEA" name="Script Execution Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Analyzing the execution of a script to detect unauthorized user activity.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:28:11.811">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-SFA" name="System File Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc/>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:22:12.119">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-SFCV" name="Stack Frame Canary Validation" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Comparing a value stored in a stack frame with a known good value in order to prevent or detect a memory segment overwrite.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:15:32.828">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-SFV" name="System Firmware Verification" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Cryptographically verifying installed system firmware integrity.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:17:22.308">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-SHN" name="Standalone Honeynet" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;An environment created for the purpose of attracting attackers and eliciting their behaviors that is not connected to any production enterprise systems.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:22:36.523">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-SICA" name="System Init Config Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Analysis of any system process startup configuration.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:22:57.286">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-SJA" name="Scheduled Job Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Analysis of source files, processes, destination files, or destination servers associated with a scheduled job to detect unauthorized use of job scheduling.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:20:43.412">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-SMRA" name="Sender MTA Reputation Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Characterizing the reputation of mail transfer agents (MTA) to determine the security risk in emails.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:29:34.004">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-SPP" name="Strong Password Policy" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font size="4"&gt;Modifying system configuration to increase password strength.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T15:37:30.936">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-SRA" name="Sender Reputation Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" size="2" color="#000000" style="font: 10.0px 'Helvetica Neue'; font-variant-ligatures: common-ligatures; color: #000000"&gt;Ascertaining sender reputation based on information associated with a message (e.g. email/instant messaging).&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:32:34.120">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-SSC" name="Shadow Stack Comparisons" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Comparing a call stack in system memory with a shadow call stack maintained by the processor to determine unauthorized shellcode activity.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:28:36.989">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-SU" name="Software Update" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Replacing old software on a computer system component.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:01:02.410">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-TAAN" name="Transfer Agent Authentication" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font size="4"&gt;Validating that server components of a messaging infrastructure are authorized to send a particular message.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T15:28:53.734">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-TBI" name="TPM Boot Integrity" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Assuring the integrity of a platform by demonstrating that the boot process starts from a trusted combination of hardware and software and continues until the operating system has fully booted and applications are running.&lt;span class="Apple-converted-space" style=""&gt;&amp;nbsp; &lt;/span&gt;Sometimes called Static Root of Trust Measurement (STRM).&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:02:09.592">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-UA" name="URL Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Determining if a URL is benign or malicious by analyzing the URL or its components.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:33:56.768">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-UAP" name="User Account Permissions" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font size="4"&gt;Restricting a user account's access to resources.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T15:38:01.863">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-UDTA" name="User Data Transfer Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Analyzing the amount of data transferred by a user.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:37:47.659">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-UGLPA" name="User Geolocation Logon Pattern Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Monitoring geolocation data of user logon attempts and comparing it to a baseline user behavior profile to identify anomalies in logon location.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:38:14.675">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-USICA" name="User Session Init Config Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Analyzing modifications to user session config files such as .bashrc or .bash_profile.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-21T09:24:10.206">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="D3-WSAA" name="Web Session Activity Analysis" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;&lt;font face="Helvetica Neue" color="#000000" style="font-style: normal; font-variant: common-ligatures; font-weight: normal; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; color: rgb(0, 0, 0);" size="4"&gt;Monitoring changes in user web session behavior by comparing current web session activity to a baseline behavior profile or a catalog of predetermined malicious behavior.&lt;/font&gt;&lt;/p&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-18T16:38:45.072">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+      </countermeasures>
+      <usecases>
+        <usecase ref="deceive" name="Deceive" desc="" library="">
+          <threats>
+            <threat ref="D3-DE" name="Decoy Envrionment" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc/>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses/>
+              <countermeasures>
+                <countermeasure ref="D3-CHN" mitigation="100"/>
+                <countermeasure ref="D3-IHN" mitigation="100"/>
+                <countermeasure ref="D3-SHN" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+            <threat ref="D3-DO" name="Decoy Object" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc/>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses/>
+              <countermeasures>
+                <countermeasure ref="D3-DNF" mitigation="100"/>
+                <countermeasure ref="D3-DNR" mitigation="100"/>
+                <countermeasure ref="D3-DP" mitigation="100"/>
+                <countermeasure ref="D3-DPR" mitigation="100"/>
+                <countermeasure ref="D3-DST" mitigation="100"/>
+                <countermeasure ref="D3-DUC" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="detect" name="Detect" desc="" library="">
+          <threats>
+            <threat ref="D3-FA" name="File Analysis" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc/>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses/>
+              <countermeasures>
+                <countermeasure ref="D3-DA" mitigation="100"/>
+                <countermeasure ref="D3-EFA" mitigation="100"/>
+                <countermeasure ref="D3-FCR" mitigation="100"/>
+                <countermeasure ref="D3-FH" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+            <threat ref="D3-ID" name="Identifier Analysis" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc/>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses/>
+              <countermeasures>
+                <countermeasure ref="D3-HD" mitigation="100"/>
+                <countermeasure ref="D3-UA" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+            <threat ref="D3-MA" name="Message Analysis" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc/>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses/>
+              <countermeasures>
+                <countermeasure ref="D3-SMRA" mitigation="100"/>
+                <countermeasure ref="D3-SRA" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+            <threat ref="D3-PA" name="Process Analysis" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc/>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses>
+                <weakness ref="D3-PSA">
+                  <countermeasures>
+                    <countermeasure ref="D3-PLA" mitigation="100"/>
+                  </countermeasures>
+                </weakness>
+                <weakness ref="D3-SCA">
+                  <countermeasures>
+                    <countermeasure ref="D3-FCA" mitigation="100"/>
+                  </countermeasures>
+                </weakness>
+              </weaknesses>
+              <countermeasures>
+                <countermeasure ref="D3-DQSA" mitigation="100"/>
+                <countermeasure ref="D3-FAPA" mitigation="100"/>
+                <countermeasure ref="D3-FCA" mitigation="100"/>
+                <countermeasure ref="D3-IBCA" mitigation="100"/>
+                <countermeasure ref="D3-PCSV" mitigation="100"/>
+                <countermeasure ref="D3-PLA" mitigation="100"/>
+                <countermeasure ref="D3-PSMD" mitigation="100"/>
+                <countermeasure ref="D3-SEA" mitigation="100"/>
+                <countermeasure ref="D3-SSC" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+            <threat ref="D3-PM" name="Platform Monitoring" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc/>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses>
+                <weakness ref="D3-FV">
+                  <countermeasures>
+                    <countermeasure ref="D3-PFV" mitigation="100"/>
+                    <countermeasure ref="D3-SFV" mitigation="100"/>
+                  </countermeasures>
+                </weakness>
+                <weakness ref="D3-OSM">
+                  <countermeasures>
+                    <countermeasure ref="D3-EHB" mitigation="100"/>
+                    <countermeasure ref="D3-IDA" mitigation="100"/>
+                    <countermeasure ref="D3-MBT" mitigation="100"/>
+                    <countermeasure ref="D3-SBV" mitigation="100"/>
+                    <countermeasure ref="D3-SDM" mitigation="100"/>
+                    <countermeasure ref="D3-SFA" mitigation="100"/>
+                    <countermeasure ref="D3-SICA" mitigation="100"/>
+                    <countermeasure ref="D3-SJA" mitigation="100"/>
+                    <countermeasure ref="D3-USICA" mitigation="100"/>
+                  </countermeasures>
+                </weakness>
+              </weaknesses>
+              <countermeasures>
+                <countermeasure ref="D3-EHB" mitigation="100"/>
+                <countermeasure ref="D3-FBA" mitigation="100"/>
+                <countermeasure ref="D3-FEMC" mitigation="100"/>
+                <countermeasure ref="D3-IDA" mitigation="100"/>
+                <countermeasure ref="D3-MBT" mitigation="100"/>
+                <countermeasure ref="D3-PFV" mitigation="100"/>
+                <countermeasure ref="D3-SBV" mitigation="100"/>
+                <countermeasure ref="D3-SDM" mitigation="100"/>
+                <countermeasure ref="D3-SFA" mitigation="100"/>
+                <countermeasure ref="D3-SFV" mitigation="100"/>
+                <countermeasure ref="D3-SICA" mitigation="100"/>
+                <countermeasure ref="D3-SJA" mitigation="100"/>
+                <countermeasure ref="D3-USICA" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+            <threat ref="D3-UBA" name="User Behaviour Analysis" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc/>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses/>
+              <countermeasures>
+                <countermeasure ref="D3-ANET" mitigation="100"/>
+                <countermeasure ref="D3-AZET" mitigation="100"/>
+                <countermeasure ref="D3-CCSA" mitigation="100"/>
+                <countermeasure ref="D3-DAM" mitigation="100"/>
+                <countermeasure ref="D3-JFAPA" mitigation="100"/>
+                <countermeasure ref="D3-LAM" mitigation="100"/>
+                <countermeasure ref="D3-RAPA" mitigation="100"/>
+                <countermeasure ref="D3-SDA" mitigation="100"/>
+                <countermeasure ref="D3-UDTA" mitigation="100"/>
+                <countermeasure ref="D3-UGLPA" mitigation="100"/>
+                <countermeasure ref="D3-WSAA" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+            <threat ref="network-traffic-analysis" name="Network Traffic Analysis" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc/>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses>
+                <weakness ref="D3-CA">
+                  <countermeasures>
+                    <countermeasure ref="D3-ACA" mitigation="100"/>
+                    <countermeasure ref="D3-PCA" mitigation="100"/>
+                  </countermeasures>
+                </weakness>
+              </weaknesses>
+              <countermeasures>
+                <countermeasure ref="D3-ACA" mitigation="100"/>
+                <countermeasure ref="D3-BSE" mitigation="100"/>
+                <countermeasure ref="D3-CA" mitigation="100"/>
+                <countermeasure ref="D3-CAA" mitigation="100"/>
+                <countermeasure ref="D3-CSPP" mitigation="100"/>
+                <countermeasure ref="D3-DNSTA" mitigation="100"/>
+                <countermeasure ref="D3-FC" mitigation="100"/>
+                <countermeasure ref="D3-IPCTA" mitigation="100"/>
+                <countermeasure ref="D3-ISVA" mitigation="100"/>
+                <countermeasure ref="D3-NTCD" mitigation="100"/>
+                <countermeasure ref="D3-PCA" mitigation="100"/>
+                <countermeasure ref="D3-PHDURA" mitigation="100"/>
+                <countermeasure ref="D3-PMAD" mitigation="100"/>
+                <countermeasure ref="D3-RPA" mitigation="100"/>
+                <countermeasure ref="D3-RTA" mitigation="100"/>
+                <countermeasure ref="D3-RTSD" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="evict" name="Evict" desc="" library="">
+          <threats>
+            <threat ref="D3-CE" name="Credential Eviction" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc/>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses/>
+              <countermeasures>
+                <countermeasure ref="D3-AL" mitigation="100"/>
+                <countermeasure ref="D3-ANCI" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+            <threat ref="D3-PE" name="Process Eviction" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc/>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses/>
+              <countermeasures>
+                <countermeasure ref="D3-PT" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="harden" name="Harden" desc="" library="">
+          <threats>
+            <threat ref="D3-AH" name="Application Hardening" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc/>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses/>
+              <countermeasures>
+                <countermeasure ref="D3-ACH" mitigation="100"/>
+                <countermeasure ref="D3-DCE" mitigation="100"/>
+                <countermeasure ref="D3-EHPV" mitigation="100"/>
+                <countermeasure ref="D3-PAN" mitigation="100"/>
+                <countermeasure ref="D3-PSEP" mitigation="100"/>
+                <countermeasure ref="D3-SAOR" mitigation="100"/>
+                <countermeasure ref="D3-SFCV" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+            <threat ref="D3-CH" name="Credential Hardening" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc/>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses/>
+              <countermeasures>
+                <countermeasure ref="D3-BAN" mitigation="100"/>
+                <countermeasure ref="D3-CBAN" mitigation="100"/>
+                <countermeasure ref="D3-CP" mitigation="100"/>
+                <countermeasure ref="D3-CTS" mitigation="100"/>
+                <countermeasure ref="D3-DTP" mitigation="100"/>
+                <countermeasure ref="D3-MFA" mitigation="100"/>
+                <countermeasure ref="D3-OTP" mitigation="100"/>
+                <countermeasure ref="D3-SPP" mitigation="100"/>
+                <countermeasure ref="D3-UAP" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+            <threat ref="D3-MH" name="Message Hardening" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc/>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses/>
+              <countermeasures>
+                <countermeasure ref="D3-MAN" mitigation="100"/>
+                <countermeasure ref="D3-MENCR" mitigation="100"/>
+                <countermeasure ref="D3-TAAN" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+            <threat ref="D3-PH" name="Platform Hardening" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc/>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses/>
+              <countermeasures>
+                <countermeasure ref="D3-BA" mitigation="100"/>
+                <countermeasure ref="D3-DENCR" mitigation="100"/>
+                <countermeasure ref="D3-DLIC" mitigation="100"/>
+                <countermeasure ref="D3-FE" mitigation="100"/>
+                <countermeasure ref="D3-LFP" mitigation="100"/>
+                <countermeasure ref="D3-RFS" mitigation="100"/>
+                <countermeasure ref="D3-SCP" mitigation="100"/>
+                <countermeasure ref="D3-SU" mitigation="100"/>
+                <countermeasure ref="D3-TBI" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="isolate" name="Isolate" desc="" library="">
+          <threats>
+            <threat ref="D3-EI" name="Execution Isolation" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc/>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses>
+                <weakness ref="D3-KBPA">
+                  <countermeasures>
+                    <countermeasure ref="D3-MAC" mitigation="100"/>
+                    <countermeasure ref="D3-SCF" mitigation="100"/>
+                  </countermeasures>
+                </weakness>
+              </weaknesses>
+              <countermeasures>
+                <countermeasure ref="D3-EA" mitigation="100"/>
+                <countermeasure ref="D3-ED" mitigation="100"/>
+                <countermeasure ref="D3-HBPI" mitigation="100"/>
+                <countermeasure ref="D3-IPR" mitigation="100"/>
+                <countermeasure ref="D3-MAC" mitigation="100"/>
+                <countermeasure ref="D3-SCF" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+            <threat ref="D3-NI" name="Network Isolation" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc/>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses>
+                <weakness ref="D3-DNSDL">
+                  <countermeasures>
+                    <countermeasure ref="D3-FRDD" mitigation="100"/>
+                    <countermeasure ref="D3-FRDDL" mitigation="100"/>
+                    <countermeasure ref="D3-FRIDL" mitigation="100"/>
+                    <countermeasure ref="D3-HDL" mitigation="100"/>
+                    <countermeasure ref="D3-RRDD" mitigation="100"/>
+                    <countermeasure ref="D3-RRID" mitigation="100"/>
+                  </countermeasures>
+                </weakness>
+              </weaknesses>
+              <countermeasures>
+                <countermeasure ref="D3-BDI" mitigation="100"/>
+                <countermeasure ref="D3-DNSAL" mitigation="100"/>
+                <countermeasure ref="D3-DTF" mitigation="100"/>
+                <countermeasure ref="D3-ET" mitigation="100"/>
+                <countermeasure ref="D3-FRDD" mitigation="100"/>
+                <countermeasure ref="D3-FRDDL" mitigation="100"/>
+                <countermeasure ref="D3-FRIDL" mitigation="100"/>
+                <countermeasure ref="D3-HDL" mitigation="100"/>
+                <countermeasure ref="D3-ITF" mitigation="100"/>
+                <countermeasure ref="D3-RRDD" mitigation="100"/>
+                <countermeasure ref="D3-RRID" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+      </usecases>
+    </riskPattern>
+  </riskPatterns>
+  <rules>
+    <rule name="Application Hardening - Web App Server" module="component" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_COMPONENT_DEFINITION" field="id" value="web-application-server-side"/>
+      </conditions>
+      <actions>
+        <action project="mitre-d3fend" value="mitre-d3fend_::_d3fend-tactic_::_harden_::_D3-AH" name="IMPORT_SPECIFIC_RISK"/>
+      </actions>
+    </rule>
+    <rule name="Application Hardening - Web Service" module="component" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_COMPONENT_DEFINITION" field="id" value="web-service"/>
+      </conditions>
+      <actions>
+        <action project="mitre-d3fend" value="mitre-d3fend_::_d3fend-tactic_::_harden_::_D3-AH" name="IMPORT_SPECIFIC_RISK"/>
+      </actions>
+    </rule>
+    <rule name="Behavioural Analysis of Users" module="component" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_COMPONENT_DEFINITION" field="id" value="CD-LOGIN"/>
+      </conditions>
+      <actions>
+        <action project="mitre-d3fend" value="mitre-d3fend_::_d3fend-tactic_::_detect_::_D3-UBA" name="IMPORT_SPECIFIC_RISK"/>
+      </actions>
+    </rule>
+    <rule name="RPC Traffic Analysis" module="dataflow" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_DATAFLOW_CONTAINS_TAG" field="id" value="RPC"/>
+      </conditions>
+      <actions>
+        <action project="mitre-d3fend" value="D3-RTA" name="IMPLEMENT_CONTROL_DESTINATION"/>
+        <action project="mitre-d3fend" value="D3-RTA" name="IMPLEMENT_CONTROL_ORIGIN"/>
+      </actions>
+    </rule>
+  </rules>
+</library>

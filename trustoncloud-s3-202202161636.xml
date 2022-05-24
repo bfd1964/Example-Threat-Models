@@ -1,0 +1,1478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library ref="trustoncloud-s3" name="TrustonCloud S3" revision="1" tags="trustoncloud">
+  <desc>https://trustoncloud.com/the-last-s3-security-document-that-well-ever-need/
+
+IriuisRisk Implmentation</desc>
+  <categoryComponents/>
+  <componentDefinitions/>
+  <supportedStandards/>
+  <riskPatterns>
+    <riskPattern uuid="3bfde71a-5612-4dd3-8436-1373ecc72b3b" ref="S3.RP1.object-upload-download" name="S3.RP1.Object Upload/Download" desc="You can upload and download virtually any number of objects to an external S3 bucket you authorized to.&#10;Amazon S3 access control lists (ACLs) enable you to manage access to objects. Each object has an ACL attached to it as a sub-resource. It defines which AWS accounts or groups are granted access and the type of access. When a request is received against a resource, Amazon S3 checks the corresponding ACL to control that the requester has the necessary access permissions (ref You can upload and download virtually any number of objects to an external S3 bucket you authorized to.&#10;Amazon S3 access control lists (ACLs) enable you to manage access to objects. Each object has an ACL attached to it as a sub-resource. It defines which AWS accounts or groups are granted access and the type of access. When a request is received against a resource, Amazon S3 checks the corresponding ACL to control that the requester has the necessary access permissions (ref https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#permissions).">
+      <tags>
+        <tag tag="class"/>
+      </tags>
+      <weaknesses/>
+      <countermeasures/>
+      <usecases>
+        <usecase ref="s3-uc10-bucket-tag" name="S3.UC10 Bucket Tag" desc="subclass of Bucket&#10;&#10;You can tag buckets (ref https://docs.aws.amazon.com/AmazonS3/latest/dev/CostAllocTagging.html)." library="">
+          <threats>
+            <threat ref="S3.T18" name="Exfiltrate data by using tags" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Objects and buckets can have tags. An attacker can use those features to exfiltrate data. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"AND": [{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"OR": ["GetObjectTagging", "s3:GetObjectVersionTagging"] }, {&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"OR": ["s3:PutObjectTagging", "s3:PutObjectVersionTagging"] }]&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="25" integrity="1" availability="1" easeOfExploitation="50"/>
+              <references>
+                <reference name="CVSS (3.1) Low 3.3" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="s3-uc11-bucket-acl" name="S3.UC11 Bucket ACL" desc="subclass of Bucket&#10;&#10;[NOT RECOMMENDED] Amazon S3 access control lists (ACLs) enable you to manage access to buckets.&#10;&#10;Each bucket has an ACL attached to it as a sub-resource. It defines which AWS accounts or groups are granted access and the type of access. When a request is received against a resource, Amazon S3 checks the corresponding ACL to control that the requester has the necessary access permissions (ref https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#permissions).&#10;&#10;IAM Permission					Action to Deny&#10;s3:PutBucketAcl	Sets the permissions on an existing bucket using access control lists (ACL)." library="">
+          <threats>
+            <threat ref="S3.T50" name="DoS by blocking traffic using bucket ACL" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="layoutArea"&gt; 
+  &lt;div class="column"&gt; 
+   &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Bucket ACL can allow access (e.g. for server access logging). An attacker can remove an existing permission to deny legitimate access to the bucket. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"UNIQUE": "s3:PutBucketAcl"&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="1" integrity="25" availability="1" easeOfExploitation="25"/>
+              <references>
+                <reference name="CVSS (3.1) Low 2.4" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:N/I:L/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0040" url="https://attack.mitre.org/tactics/TA0040"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Disruption of Service"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T4" name="Grant unauthorised access to a private bucket by changing bucket ACL" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Bucket ACL can be used to give access to the bucket information, list the objects, and overwrite/delete objects. An attacker can change the bucket ACL to destroy or modify data, or exfiltrate data via the object name (1KB). &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font size="2"&gt;"UNIQUE": "s3:PutBucketAcl"&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="25" integrity="75" availability="1" easeOfExploitation="50"/>
+              <references>
+                <reference name="CVSS (3.1) Medium 5.2" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:H/UI:N/S:U/C:L/I:H/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0040" url="https://attack.mitre.org/tactics/TA0040"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Manipulation"/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="s3-uc12-s3-access-logging" name="S3.UC12 S3 Access Logging" desc="subclass of Bucket ACL&#10;&#10;Server access logging provides detailed records for the requests that are made to a bucket. CloudTrail S3&#10;data events are preferred, due to the more reliable delivery timing, consistency, supporting KMS encryption and S3 Object Lock (full comparison - https://www.netskope.com/blog/aws-s3-logjam-server-access-logging-vs-object-level-logging), however website endpoint is not recorded on S3 data events, some SIEM modules might be more featured with S3 access logs, and access logging is free beside storage.&#10;&#10;IAM Permission					Action to Deny&#10;s3:PutBucketLogging				Sets the logging parameters for a bucket." library="">
+          <threats>
+            <threat ref="S3.T51" name="Evade detection by disabling S3 access logs" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="layoutArea"&gt; 
+  &lt;div class="column"&gt; 
+   &lt;p&gt;&lt;font size="4" style=""&gt;&lt;font face="OpenSans"&gt;S3 access logs can be used by SIEM to detect abnormal behaviours. An attacker can disable S3 access log on a bucket to evade detection. &lt;/font&gt;&lt;/font&gt;&lt;/p&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="1" integrity="25" availability="1" easeOfExploitation="25"/>
+              <references>
+                <reference name="CVSS (3.1) Low 2.7" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0005" url="https://attack.mitre.org/tactics/TA0005"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Launch Another Attack"/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="s3-uc13-bucket-policy" name="S3.UC13 Bucket Policy" desc="subclass of Bucket&#10;&#10;For your bucket, you can add a bucket policy to grant other AWS accounts or IAM users permissions for the bucket and the objects in it. Any object permissions apply only to the objects that the bucket owner creates.&#10;&#10;IAM Permission				Action to Deny&#10;s3:PutBucketPolicy			Adds to/or replaces a policy on a bucket." library="">
+          <threats>
+            <threat ref="S3.T37" name="Grant unauthorised access to a private bucket by changing bucket policy" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Bucket policy can enable access to objects owned by the bucket. An attacker (or someone by negligence) can change the bucket policy and make the content accessible. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"UNIQUE": "s3:PutBucketPolicy"&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="75" availability="75" easeOfExploitation="50"/>
+              <references>
+                <reference name="CVSS (3.1) High 7.2" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T38" name="Reduce bucket security by deleting the bucket policy" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Bucket policy can deny access to objects, as it supersedes the object authority. An attacker (or someone by negligence) can delete the bucket policy and make the content less secure. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references>
+                <reference name="CVSS (3.1) Medium 6.4" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H"/>
+                <reference name="Mitre ATT&amp;CK TA0004" url="https://attack.mitre.org/tactics/TA0004"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Launch Another Attack"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T20" name="Use CloudFront to access private bucket" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="layoutArea"&gt; 
+  &lt;div class="column"&gt; 
+   &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;CloudFront distributions can use S3 as their origin. An attacker can connect a CloudFront distribution to a private S3 bucket to get access to it. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"UNIQUE": "s3:PutBucketPolicy"&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="1" availability="1" easeOfExploitation="50"/>
+              <references>
+                <reference name="CVSS (3.1) Medium 5.5" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="s3-uc14-analytics" name="S3.UC14 Analytics" desc="subclass of Bucket&#10;&#10;You can analyse storage access patterns to decide on the storage class (ref https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html).&#10;&#10;IAM Permission and Action to Deny Feature&#10;s3:PutAnalyticsConfiguration	Adds an analytics configuration (identified by the analytics ID) to the bucket." library="">
+          <threats/>
+        </usecase>
+        <usecase ref="s3-uc15-inventory" name="S3.UC15 Inventory" desc="subclass of Bucket&#10;&#10;You can create a report on your storage, including object metadata, or versions (ref https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html#storage-inventory-how-to-set-up).&#10;&#10;IAM Permission and Action to Deny feature&#10;s3:PutInventoryConfiguration	Adds an inventory configuration (identified by the inventory ID) to the bucket" library="">
+          <threats>
+            <threat ref="S3.T42" name="Exfiltrate data via inventory" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="layoutArea"&gt; 
+  &lt;div class="column"&gt; 
+   &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Inventory sends the object names (i.e. keys) to any configured S3 bucket. An attacker can use the name of objects (1KB) to exfiltrate data. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"UNIQUE": "s3:PutBucketInventory"&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="s3-uc16-lifecycle" name="S3.UC16 Lifecycle" desc="subclass of Bucket&#10;&#10;You can lifecycle your data to reduce the cost of storage (ref https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html).&#10;&#10;IAM Permission and Action to Deny feature&#10;s3:PutLifecycleConfiguration Creates a new lifecycle configuration for the bucket or replaces an existing lifecycle configuration.&#10;s3:PutIntelligentTieringConfiguration Puts a S3 Intelligent-Tiering configuration to the specified bucket" library="">
+          <threats>
+            <threat ref="S3.T25" name="Delete objects by using lifecycle" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="layoutArea"&gt; 
+  &lt;div class="column"&gt; 
+   &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Lifecycle allows you to delete objects after its configured expiry. An attacker can use a lifecycle configuration to destroy data. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"UNIQUE": "s3:PutLifecycleConfiguration"&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="1" availability="1" easeOfExploitation="50"/>
+              <references>
+                <reference name="CVSS (3.1) Medium 5.5" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="s3-uc17-metrics" name="S3.UC17 Metrics" desc="subclass of Bucket,&#10;&#10;You can configure metrics to get additional insights into your usage (ref https://docs.aws.amazon.com/AmazonS3/latest/user-guide/configure-metrics.html).&#10;&#10;IAM Permission and Action to Deny feature&#10;s3:PutMetricsConfiguration Sets or updates a metrics configuration for the CloudWatch request metrics (specified by the metrics configuration ID) from the bucket." library="">
+          <threats/>
+        </usecase>
+        <usecase ref="s3-uc18-s3-storage-lens" name="S3.UC18 S3 Storage Lens" desc="subclass of Bucket&#10;&#10;S3 Storage Lens provides a single view of object storage usage and activity across your entire S3 storage.&#10;&#10;IAM Permission and Action to Deny feature&#10;s3:PutStorageLensConfiguration Puts an Amazon S3 Storage Lens configuration" library="">
+          <threats/>
+        </usecase>
+        <usecase ref="s3-uc19-website" name="S3.UC19 Website" desc="subclass of Bucket&#10;&#10;You can host a static website on Amazon S3. On a static website, individual web pages include static content. They might also contain client-side scripts (ref https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html).&#10;&#10;IAM Permission and Action to Deny feature&#10;s3:PutBucketWebsite Sets the configuration of the website that is specified in the website sub-resource." library="">
+          <threats>
+            <threat ref="S3.T29" name="Clickjacking on S3 website" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="layoutArea"&gt; 
+  &lt;div class="column"&gt; 
+   &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;S3 does not enforce certain security headers by default. An attacker can use an iFrame on your website to trick users to interact with their own scripts. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;&lt;br&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="25" integrity="25" availability="1" easeOfExploitation="50"/>
+              <references>
+                <reference name="CVSS Medium 4.2" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0040" url="https://attack.mitre.org/tactics/TA0040"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Launch Another Attack"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T15" name="Embed client-side script malware in bucket website" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;S3 website enables users to be served client-side scripts (e.g. JavaScript). An attacker can upload a client-side script with a malware (e.g. cryptomining) on the visitor. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"UNIQUE": "s3:PutObject"&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="1" availability="1" easeOfExploitation="50"/>
+              <references>
+                <reference name="CVSS (3.1) Medium 5.5" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0040" url="https://attack.mitre.org/tactics/TA0040"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Direct Financial Gain"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T13" name="Intercept data in transit on the website endpoint" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="layoutArea"&gt; 
+  &lt;div class="column"&gt; 
+   &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;S3 website endpoint is serving HTTP only. An attacker can intercept HTTP traffic to steal data. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;br&gt;&lt;/p&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references>
+                <reference name="CVSS (3.1) Low 3.1" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="s3-uc01-upload-download-acl-attached" name="S3.UC01 Upload/Download" desc="IAM permissions Action&#10;&#10;s3:GetObject.       Retrieves an object from Amazon S3.&#10;s3:PutObject.       Adds an object to a bucket.&#10;s3:PutObjectAcl  Sets the access control list (ACL) permissions for an object. You must have WRITE_ACP permission to set the ACL of an object." library="">
+          <threats>
+            <threat ref="S3.T9" name="Exfiltrate data by uploading it to an attacker bucket using a non-authenticated user or an unauthorised external IAM entity via one of your S3 VPC endpoints" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;VPC endpoints for S3 allow any entity to connect from a VPC to any S3 bucket without Internet Gateway. An attacker can exfiltrate data to an external S3 bucket via one of your VPC endpoints, using a non-authenticated user or its own external IAM entity. Note that some external IAM entities might be authorised, if provided by one of your business partners. &lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="1" availability="1" easeOfExploitation="50"/>
+              <references>
+                <reference name="CVSS Medium (6.2)" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T21" name="Exfiltrate data stored on S3 via AWS services" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Number of AWS services are using S3 for storage, including storing in cross- account S3 buckets. Services with IAM roles (e.g. SageMaker) will give ownership to the target AWS account, hence removing the ownership protection. An attacker can use those services to exfiltrate data. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;&lt;br&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;IAM Access&lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt; &lt;/p&gt; 
+    &lt;div class="page"&gt; 
+     &lt;div class="section"&gt; 
+      &lt;div class="layoutArea"&gt; 
+       &lt;div class="column"&gt; 
+        &lt;p&gt;&lt;span style="font-size: 7.000000pt; font-family: 'OpenSans'"&gt;{&lt;/span&gt;&lt;/p&gt; 
+        &lt;p&gt;&lt;span style="font-size: 7.000000pt; font-family: 'OpenSans'"&gt; "OPTIONAL": "s3:PutObjectAcl" &lt;/span&gt;&lt;/p&gt; 
+        &lt;p&gt;&lt;span style="font-size: 7.000000pt; font-family: 'OpenSans'"&gt;}&amp;nbsp;&lt;/span&gt;&lt;/p&gt; 
+       &lt;/div&gt; 
+      &lt;/div&gt; 
+     &lt;/div&gt; 
+    &lt;/div&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="1" availability="1" easeOfExploitation="50"/>
+              <references>
+                <reference name="CVSS Medium (5.8)" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:H/PR:L/UI:N/S:C/C:H/I:N/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T7" name="Exfiltrate data to an attacker bucket via public endpoint" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;S3 allows IAM entities to upload data in a bucket in other AWS accounts, if they have the IAM permissions. An attacker can use one of your IAM entities to upload data to one of their buckets. If the attacker does not control object ACL, it can use the name of objects (1KB). &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;IAM Access&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;"AND": ["s3:PutObject", {&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;"OPTIONAL": "s3:PutObjectAcl" }]&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="1" availability="1" easeOfExploitation="50"/>
+              <references>
+                <reference name="CVSS Medium 5.7" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T45" name="Exfiltrate data via ungoverned S3 endpoint" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="layoutArea"&gt; 
+  &lt;div class="column"&gt; 
+   &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;S3 VPC endpoints can be either Interface or Gateway. An attacker can create a second endpoint to create an ungoverned exfiltration vector. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;IAM Access&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;{&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;"UNIQUE": "ec2:CreateVpcEndpoint"&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;}&lt;/font&gt;&lt;/p&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="1" integrity="25" availability="1" easeOfExploitation="25"/>
+              <references>
+                <reference name="CVSS Low 1.9" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:N/I:L/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0005" url="https://attack.mitre.org/tactics/TA0005"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Launch Another Attack"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T3" name="Exfiltrate your data hosted on an external bucket, by using of a compromised IAM access from Internet" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="layoutArea"&gt; 
+  &lt;div class="column"&gt; 
+   &lt;p&gt; &lt;/p&gt; 
+   &lt;div class="page"&gt; 
+    &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+     &lt;div class="layoutArea"&gt; 
+      &lt;div class="column"&gt; 
+       &lt;p&gt;&lt;font face="OpenSans"&gt;&lt;span style="font-size: 11pt;"&gt;IAM credentials can be compromised. An attacker can use a compromised but &lt;/span&gt;&lt;span style="font-size: 14.6667px;"&gt;authorised&lt;/span&gt;&lt;span style="font-size: 11pt;"&gt;&amp;nbsp;credential to download your object from an external bucket via the public endpoint (using or not their own VPC endpoint).&amp;nbsp;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt; 
+       &lt;p&gt;&lt;font face="OpenSans"&gt;&lt;span style="font-size: 11pt;"&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt; 
+       &lt;p&gt;&lt;font face="OpenSans"&gt;&lt;span style="font-size: 14.6667px;"&gt;IAM Access&lt;/span&gt;&lt;/font&gt;&lt;/p&gt; 
+       &lt;p&gt; &lt;/p&gt; 
+       &lt;div class="page"&gt; 
+        &lt;div class="section"&gt; 
+         &lt;div class="layoutArea"&gt; 
+          &lt;div class="column"&gt; 
+           &lt;p&gt;&lt;span style="font-size: 7.000000pt; font-family: 'OpenSans'"&gt;{&lt;/span&gt;&lt;/p&gt; 
+           &lt;p&gt;&lt;span style="font-size: 7.000000pt; font-family: 'OpenSans'"&gt;&lt;br&gt; "UNIQUE": "s3:GetObject" &lt;/span&gt;&lt;/p&gt; 
+           &lt;p&gt;&lt;span style="font-size: 7.000000pt; font-family: 'OpenSans'"&gt;}&amp;nbsp;&lt;/span&gt;&lt;/p&gt; 
+          &lt;/div&gt; 
+         &lt;/div&gt; 
+        &lt;/div&gt; 
+       &lt;/div&gt; 
+      &lt;/div&gt; 
+     &lt;/div&gt; 
+    &lt;/div&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="75" availability="1" easeOfExploitation="50"/>
+              <references>
+                <reference name="Medium (6.7)" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N"/>
+                <reference name="Mitre TA0010" url="https://attack.mitre.org/versions/v10/tactics/TA0010/"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T12" name="Intercept data in transit to an external bucket" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="layoutArea"&gt; 
+  &lt;div class="column"&gt; 
+   &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;S3 allows communication over HTTP. An attacker can intercept the traffic you send on an external bucket, in order to read or modify the data. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;IAM Access&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;{&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;"UNIQUE": "s3:any"&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;}&lt;/font&gt;&lt;/p&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="25" availability="1" easeOfExploitation="50"/>
+              <references>
+                <reference name="CVSS Medium 4.6" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:P/AC:H/PR:N/UI:R/S:U/C:H/I:L/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T43" name="Loss of ownership of an object" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;S3 Object Ownership enables a bucket receiver to convert a bucket-owner-full- control ACL into an ownership transfer (for new object); additionally a bucket can convert all the objects to be owned by the bucket owner. An attacker can modify the receiver bucket to remove your object ACL control on an object, and remove your access to this object. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="75" availability="75" easeOfExploitation="50"/>
+              <references>
+                <reference name="CVSS Medium (6.3)" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:N/A:N"/>
+                <reference name="Mitre ATT&amp;CK" url="https://attack.mitre.org/tactics/TA0040"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Manipulation"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T6" name="Unauthorised modification of an object to become public or accessible in a private bucket you do not own by changing object ACL" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;font size="4"&gt;&lt;span style="font-family: OpenSans;"&gt;Bucket authority only prevails on object ACL when the object access is explicitly denied (&lt;/span&gt;&lt;span style="font-family: OpenSans; color: rgb(17, 85, 204);"&gt;&lt;a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-auth-workflow-object-operation.html" target="_blank"&gt;ref&lt;/a&gt;&lt;/span&gt;&lt;span style="font-family: OpenSans;"&gt;). An attacker (or someone by negligence) can change the object ACL to make it public or accessible for themselves. &lt;/span&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;IAM Access&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;"UNIQUE": "s3:PutObjectAcl"&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references>
+                <reference name="CVSS Medium 5.2" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:H/UI:N/S:U/C:L/I:H/A:N"/>
+                <reference name="Mitre ATT&amp;CK" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T26" name="Unauthorised object restore into an unauthorised bucket" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="layoutArea"&gt; 
+  &lt;div class="column"&gt; 
+   &lt;p&gt;&lt;font size="4" style=""&gt;&lt;font face="OpenSans"&gt;Objects can be stored in S3 Glacier. An attacker can restore an object to an unauthorised&amp;nbsp;S3 bucket to collect or exfiltrate data. &lt;/font&gt;&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;IAM Access&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;{&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;"UNIQUE": "s3:RestoreObject"&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font size="4"&gt;&lt;font face="OpenSans"&gt;&lt;/font&gt;&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;}&lt;/font&gt;&lt;/p&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="1" availability="1" easeOfExploitation="50"/>
+              <references>
+                <reference name="CVSS Medium 4.5" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:H/I:N/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T5" name="Unauthorised upload of a private object in an accessible bucket (e.g. public) you do not own" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;S3 buckets can be public for a legitimate reason. An attacker (or someone by negligence) can upload sensitive data in an accessible bucket (e.g. public) you do not own to make it accessible to exfiltrate it. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;IAM Access&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;"UNIQUE": "s3:PutObject"&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="1" availability="1" easeOfExploitation="50"/>
+              <references>
+                <reference name="CVSS Medium 5.7" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T31" name="Upload in an authorised external bucket, but in an incorrect AWS account" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Bucket names are globally unique. An attacker can take over a legitimate external bucket, and deceive you into sending it to their bucket. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;IAM Access&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;"UNIQUE": "s3:PutObject"&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="1" availability="1" easeOfExploitation="25"/>
+              <references>
+                <reference name="CVSS Medium 4.0" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:H/PR:H/UI:R/S:U/C:H/I:N/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T35" name="Use of less secure or old S3 features" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-size: 11.000000pt; font-family: 'OpenSans'"&gt;S3 was launched in 2006, and its features have evolved. An attacker can use older features that have been proven less secure by AWS (e.g. certain API configuration, &lt;/span&gt;&lt;span style="font-size: 11.000000pt; font-family: 'OpenSans'; color: rgb(6.670000%, 33.300000%, 80.000000%)"&gt;&lt;a href="https://aws.amazon.com/blogs/aws/amazon-s3-update-sigv2-deprecation-period-extended-modified/" target="_blank"&gt;SigV2&lt;/a&gt;&lt;/span&gt;&lt;span style="font-size: 11.000000pt; font-family: 'OpenSans'"&gt;, path-style model), but are still maintained for retro- compatibility. &lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;&lt;span style="font-size: 14.6667px;"&gt;IAM Access&lt;/span&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;&lt;span style="font-size: 14.6667px;"&gt;{&lt;/span&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;&lt;span style="font-size: 14.6667px;"&gt;"UNIQUE": "s3:deprecated"&lt;/span&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;&lt;span style="font-size: 14.6667px;"&gt;}&lt;/span&gt;&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="1" integrity="25" availability="1" easeOfExploitation="25"/>
+              <references>
+                <reference name="CVSS Low 1.9" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:N/I:L/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Launch Another Attack"/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="s3-uc20-s3-object-lock" name="S3.UC20 S3 Object Lock" desc="subclass of Bucket&#10;&#10;You can use S3 Object Lock to store objects using a write-once-read-many (WORM) model (ref https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-retention-modes). Creating a bucket with S3 Object Lock will enable versioning even without permissions&#10;&#10;IAM Permission and Action to Deny feature&#10;s3:PutObjectRetention Puts object retention on a specific object&#10;s3:PutObjectLockConfiguration Allows to place a default S3 Object Lock configuration at bucket creation (AWS Support needs to be contacted for existing buckets). It automatically enables versioning, even without the permission.&#10;s3:BypassGovernanceRetention Grants permission to allow circumvention of governance-mode object retention settings (for DeleteObject, DeleteObjects and PutObjectRetention)" library="">
+          <threats/>
+        </usecase>
+        <usecase ref="s3-uc21-legal-hold" name="S3.UC21 Legal Hold" desc="subclass of S3 Object Lock&#10;&#10;A legal hold provides the same protection as a retention period, but it has no expiration date. Instead, a legal hold remains in place until you explicitly remove it. Legal holds are independent from retention periods.&#10;&#10;IAM Permission and Action to Deny feature&#10;s3:PutObjectLegalHold Puts Object Lock legal hold on a specific object" library="">
+          <threats/>
+        </usecase>
+        <usecase ref="s3-uc22-transfer-acceleration" name="S3.UC22 Transfer Acceleration" desc="subclass of Bucket&#10;&#10;You can use Transfer Acceleration to improve the performance of long-distance transfers (ref https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html).&#10;&#10;IAM Permission and Action to Deny feature&#10;s3:PutAccelerateConfiguration Sets the Transfer Acceleration state of an existing bucket." library="">
+          <threats/>
+        </usecase>
+        <usecase ref="s3-uc23-notification" name="S3.UC23 Notification" desc="subclass of Bucket&#10;&#10;You can receive notifications when certain events happen in your bucket. Notifications can be sent cross-account (ref https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html).&#10;&#10;IAM Permission and Action to Deny feature&#10;s3:PutBucketNotification Enables you to receive notifications when certain events happen in your bucket." library="">
+          <threats>
+            <threat ref="S3.T41" name="Exfiltrate data via event notification" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Event notification sends the key to any configured SQS, SNS or Lambda (cross- account), or EventBridge (same account). An attacker can use the name of objects (1KB) to exfiltrate data. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="s3-uc24-access-point" name="S3.UC24 Access Point" desc="subclass of Bucket&#10;&#10;Access points are named network endpoints that are attached to buckets that you can use to perform S3 object operations. Only certain operations and AWS services are compatible.&#10;&#10;IAM Permission and Action to Deny feature&#10;s3:CreateAccessPoint Creates a new access point. " library="">
+          <threats>
+            <threat ref="S3.T54" name="Grant unauthorised access to a bucket by changing/deleting access point policy" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Access point policy can enable access to objects owned by the bucket. An attacker (or someone by negligence) can change the access point policy and make the content accessible. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"OR": ["s3:PutAccessPointPolicy", "s3:DeleteAccessPointPolicy"]&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references>
+                <reference name="CVSS (3.1) Medium 6.8" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:N/I:H/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T28" name="Unauthorised collection of data by swapping access point" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Access points can be deleted and recreated with the same name, and therefore the same ARN. An attacker can delete an access point and recreate the same, on a bucket (in the same account) it controls to collect/modify data; or making it accessible from the Internet. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font size="2"&gt;"AND": ["s3:CreateAccessPoint", "s3:DeleteAccessPoint"]&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="25" availability="1" easeOfExploitation="25"/>
+              <references>
+                <reference name="CVSS (3.1) Medium 4.6" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:H/PR:H/UI:R/S:U/C:H/I:L/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0009" url="https://attack.mitre.org/tactics/TA0009"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="s3-uc25-s3-object-lambda" name="S3.UC25 S3 Object Lambda" desc="subclass of Access point&#10;&#10;S3 Object Lambda enables users to apply their own custom code to process the output of a standard S3 request by automatically invoking a Lambda function&#10;&#10;IAM Permission and Action to Deny feature&#10;s3:CreateAccessPointForObjectLambda Creates an Object Lambda access point&#10;s3-object-lambda:GetObject Grants permission to retrieve objects from Amazon S3&#10;s3-object-lambda:PutObject Grants permission to add an object to a bucket" library="">
+          <threats>
+            <threat ref="S3.T46" name="Hijack connection with an Object Lambda" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div&gt; 
+ &lt;div class="page"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Object Lambda are invoked between the access point and the object. An attacker can configure a Lambda to modify, snoop or exfiltrate data.&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt; 
+&lt;div&gt; &lt;font size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt; 
+&lt;/div&gt; 
+&lt;div&gt; &lt;font size="2"&gt;{&lt;/font&gt; 
+&lt;/div&gt; 
+&lt;div&gt; &lt;font size="2"&gt;"OR": ["s3:CreateAccessPointForObjectLambda", "s3:PutAccessPointConfigurationForObjectLambda"]&lt;/font&gt; 
+&lt;/div&gt; 
+&lt;div&gt; &lt;font size="2"&gt;}&lt;/font&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references>
+                <reference name="CVSS (3.1) Medium 5.7" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="s3-uc26-multi-region-access-points" name="S3.UC26 Multi-Region Access Points" desc="subclass of Bucket, FC33&#10;&#10;S3 Multi-Region Access Points provide a single global endpoint to access a data set that spans multiple S3 buckets in different AWS Regions.&#10;&#10;IAM Permission and Action to Deny feature&#10;s3:CreateMultiRegionAccessPoint Creates a Multi-Region Access Point and associates it with the specified buckets." library="">
+          <threats>
+            <threat ref="S3.T56" name="Gain unauthorised access to buckets trusting all Multi-Region Access Points" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Buckets used by Multi-Region Access Points can be configured to delegate their access to any MRAP using the condition "s3:DataAccessPointAccount". An attacker can create a MRAP, add any misconfigured bucket and gain access to it. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"AND": ["s3:CreateMultiRegionAccessPoint", "s3:PutMultiRegionAccessPointPolicy"]&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references>
+                <reference name="CVSS (3.1) Medium 5.7" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:H/UI:R/S:C/C:N/I:H/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T55" name="Grant unauthorised access to buckets by changing the Multi-Region Access Point policy" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Multi-Region Access Point policy can enable access to objects owned by the bucket. An attacker (or someone by negligence) can change the Multi-Region Access Point policy and make the content accessible. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"UNIQUE": "s3:PutMultiRegionAccessPointPolicy"&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="1" integrity="75" availability="1" easeOfExploitation="25"/>
+              <references>
+                <reference name="CVSS (3.1) Medium 6.8" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:N/I:H/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0008" url="https://attack.mitre.org/tactics/TA0008"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Launch Another Attack"/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="s3-uc27-cors" name="S3.UC27 CORS" desc="subclass of Bucket, FC22&#10;&#10;[NOT RECOMMENDED] To configure your bucket to allow cross-origin requests, you create a CORS configuration, which is an XML document with rules that identify the origins that you will allow to access your bucket, the operations (HTTP methods) that will support for each origin, and other operation-specific information. This feature class is not recommended to be activated since it is all HTTP. Prefer the usage of CDN (e.g. CloudFront), API Gateway, and/or WAF fronting S3 buckets.&#10;&#10;IAM Permission and Action to Deny feature&#10;s3:PutBucketCORS Sets the CORS configuration for your bucket." library="">
+          <threats/>
+        </usecase>
+        <usecase ref="s3-uc28-bucket-default-encryption" name="S3.UC28 Bucket default encryption" desc="subclass of Bucket, FC23&#10;&#10;You can set default encryption on a bucket so that all new objects are encrypted when they are stored in the bucket&#10;&#10;IAM Permission and Action to Deny feature&#10;s3:PutEncryptionConfiguration Sets the default encryption configuration for the bucket." library="">
+          <threats/>
+        </usecase>
+        <usecase ref="s3-uc29-s3-object-ownership" name="S3.UC29 S3 Object Ownership" desc="subclass of Bucket, used by Object upload/download, FC30&#10;&#10;Enables bucket owners to automatically assume ownership of objects that are uploaded to their buckets by other AWS accounts. When the object is Put with an ACL of bucket-owner-full-control, the object will be fully owned by the target bucket owner. If the ACL is added later, the ownership is kept by object owner (ref https://docs.aws.amazon.com/AmazonS3/latest/dev/about-object-ownership.html).&#10;&#10;IAM Permission and Action to Deny feature&#10;s3:PutBucketOwnershipControls Creates or modifies OwnershipControls for an Amazon S3 bucket" library="">
+          <threats/>
+        </usecase>
+        <usecase ref="s3-uc02-s3-bucket" name="S3.UC02 S3 Bucket" desc="To upload your data into your AWS account, you must create an S3 bucket in one of the AWS Regions.&#10;&#10;IAM permissions  Action&#10;&#10;s3:CreateBucket  Creates a new bucket" library="">
+          <threats>
+            <threat ref="S3.T27" name="Abuse MD5 etag" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Etags includes the MD5 of the file but not consistently and can be used by developers to verify the integrity of a file. An attacker can affect an upload function to change the etag of a file, in order to disrupt a workflow downstream. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="1" integrity="25" availability="1" easeOfExploitation="25"/>
+              <references>
+                <reference name="CVSS (3.1) Low 1.8" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:H/PR:H/UI:R/S:U/C:N/I:L/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0040" url="https://attack.mitre.org/tactics/TA0040"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Manipulation"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T1" name="Bucket takeover to gather data" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Bucket names are globally unique. An attacker can recreate the same bucket name of a deleted bucket you used to own to collect any new data being uploaded by a non-updated party, do a DNS takeover (using a non-deleted CNAME / CloudFront origin to the bucket) or to use remaining permissions to exfiltrate data. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;"OPTIONAL": "s3:DeleteBucket"&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references>
+                <reference name="CVSS Medium 5.2" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:H/I:L/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T17" name="Destroy or modify primary data" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;font size="4"&gt;&lt;span style="font-family: OpenSans;"&gt;S3 provides high durability by design (11 9s), however data can still be deleted by the customer. An attacker (or someone by negligence) can use its access to destroy (or modify) primary data located on S3, affecting the ability for the business to operate (for example, &lt;/span&gt;&lt;span style="font-family: OpenSans; color: rgb(17, 85, 204);"&gt;&lt;a href="https://www.networkcomputing.com/cloud-infrastructure/code-spaces-lesson-cloud-backup" target="_blank"&gt;Code Spaces&lt;/a&gt;&lt;/span&gt;&lt;span style="font-family: OpenSans;"&gt;). &lt;/span&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;"AND": ["s3:DeleteObject", {&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;"OPTIONAL": "S3:DeleteObjectVersion" }, {&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;"OPTIONAL": "s3:BypassGovernanceMode" }]&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references>
+                <reference name="CVSS Medium 6.1" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:H"/>
+                <reference name="Example Code Spaces" url="https://www.networkcomputing.com/cloud-infrastructure/code-spaces-lesson-cloud-backup"/>
+                <reference name="Mitre ATT&amp;CK TA0040" url="https://attack.mitre.org/tactics/TA0040"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Disruption of Service"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T39" name="Exfiltrate data by using of a compromised IAM access from Internet" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;font size="4"&gt;&lt;span style="font-family: OpenSans;"&gt;IAM credentials can be compromised (directly or using &lt;/span&gt;&lt;span style="font-family: OpenSans; color: rgb(17, 85, 204);"&gt;&lt;a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/ShareObjectPreSignedURL.html" target="_blank"&gt;pre-signed URL&lt;/a&gt;&lt;/span&gt;&lt;span style="font-family: OpenSans;"&gt;). An attacker can use a compromised but authorized IAM credential to download your object from an internal bucket via the public endpoint (using or not their own VPC endpoint). &lt;/span&gt;&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="1" availability="1" easeOfExploitation="75"/>
+              <references>
+                <reference name="CVSS Medium 6.5" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T16" name="Files encrypted for ransomware" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;font size="4"&gt;&lt;span style="font-family: OpenSans;"&gt;S3 provides several types of encryption where the key is not operated by AWS (e.g. SSE-KMS with Bring Your Own Key). An attacker can encrypt all the data stored in S3 to ransom the data owner to get the decryption key (&lt;/span&gt;&lt;span style="font-family: OpenSans; color: rgb(17, 85, 204);"&gt;&lt;a href="https://rhinosecuritylabs.com/aws/s3-ransomware-part-1-attack-vector" target="_blank"&gt;blog&lt;/a&gt;&lt;/span&gt;&lt;span style="font-family: OpenSans;"&gt;). Alternatively, an attacker can change the default encryption key, for a similar effect on any new data uploaded. &lt;/span&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;IAM Access&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;"AND": ["s3:GetObject", "s3:PutObject"]&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="1" integrity="75" availability="25" easeOfExploitation="75"/>
+              <references>
+                <reference name="Blog - Rhino Security Labs" url="https://rhinosecuritylabs.com/aws/s3-ransomware-part-1-attack-vector"/>
+                <reference name="CVSS Medium 6.3" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:L"/>
+                <reference name="Mitre ATT&amp;CK TA0040" url="https://attack.mitre.org/tactics/TA0040"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Direct Financial Gain"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T22" name="Hot linking content from S3 bucket" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="layoutArea"&gt; 
+  &lt;div class="column"&gt; 
+   &lt;p&gt;&lt;font size="4"&gt;&lt;span style="font-family: OpenSans;"&gt;S3 charges for hosting and data transfer out. An attacker can hotlink your content hosted on S3 on another page to avoid paying the S3 charges (&lt;/span&gt;&lt;span style="font-family: OpenSans; color: rgb(17, 85, 204);"&gt;&lt;a href="https://aws.amazon.com/blogs/security/how-to-prevent-hotlinking-by-using-aws-waf-amazon-cloudfront-and-referer-checking/" target="_blank"&gt;ref&lt;/a&gt;&lt;/span&gt;&lt;span style="font-family: OpenSans;"&gt;).&lt;/span&gt;&lt;/font&gt;&lt;/p&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="1" integrity="25" availability="1" easeOfExploitation="75"/>
+              <references>
+                <reference name="CVSS Low 3.5" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0040" url="https://attack.mitre.org/tactics/TA0040"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Financial Drain"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T40" name="Increase bill by creating incomplete uploads" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;font size="4"&gt;&lt;span style="font-family: OpenSans;"&gt;By default, when a multiple upload is initiated but not completed, S3 will keep it (&lt;/span&gt;&lt;span style="font-family: OpenSans; color: rgb(17, 85, 204);"&gt;&lt;a href="https://www.reddit.com/r/aws/comments/immer3/protip_watch_out_for_stranded_multipart_uploads_i/" target="_blank"&gt;ref&lt;/a&gt;&lt;/span&gt;&lt;span style="font-family: OpenSans;"&gt;). An attacker can upload a large amount of data without completing it, while being hard to detect. &lt;/span&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"UNIQUE": "s3:PutObject"&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="1" integrity="25" availability="1" easeOfExploitation="25"/>
+              <references>
+                <reference name="CVSS (3.0) Low 2.3" url="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0040" url="https://attack.mitre.org/tactics/TA0040"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Financial Drain"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T47" name="Increase bill by restoring large amount of data" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="layoutArea"&gt; 
+  &lt;div class="column"&gt; 
+   &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Restore cost can be amplified by the size and the type (i.e. expedited). An attacker can restore lots of data to generate costs. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans"&gt;{&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans"&gt;"UNIQUE": "s3:RestoreObject"&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans"&gt;}&lt;/font&gt;&lt;/p&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="1" integrity="25" availability="1" easeOfExploitation="25"/>
+              <references>
+                <reference name="CVSS Low 2.7" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0040" url="https://attack.mitre.org/tactics/TA0040"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Financial Drain"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T34" name="Intercept data in transit to an internal bucket" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="layoutArea"&gt; 
+  &lt;div class="column"&gt; 
+   &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;S3 allows communication over HTTP. An attacker can intercept the traffic you send on an internal bucket, in order to read or modify the data. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"UNIQUE": "s3:any"&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="25" availability="1" easeOfExploitation="50"/>
+              <references>
+                <reference name="CVSS Medium 4.6" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:P/AC:H/PR:N/UI:R/S:U/C:H/I:L/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T11" name="Move prod data in non-prod environment" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Multiple types of environments are usually operated in AWS. An attacker can move the data from a secure location (e.g. production) to a less secure location (e.g. dev). &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"UNIQUE": "s3:GetObject"&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="1" availability="1" easeOfExploitation="50"/>
+              <references>
+                <reference name="CVSS Medium 4.4" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0009" url="https://attack.mitre.org/tactics/TA0009"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T36" name="Object made public or accessible in a private bucket you own by changing object ACL" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;font size="4"&gt;&lt;span style="font-family: OpenSans;"&gt;Bucket authority only prevails on object ACL when the object access is explicitly denied by the bucket authority (&lt;/span&gt;&lt;span style="font-family: OpenSans; color: rgb(17, 85, 204);"&gt;&lt;a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-auth-workflow-object-operation.html" target="_blank"&gt;ref&lt;/a&gt;&lt;/span&gt;&lt;span style="font-family: OpenSans;"&gt;). An attacker (or someone by negligence) can change the object ACL to make it public or accessible for themselves (to exfiltrate or modify). &lt;/span&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;"UNIQUE": "s3:PutObjectAcl"&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="75" availability="1" easeOfExploitation="50"/>
+              <references>
+                <reference name="CVSS Medium 5.9" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+                <reference name="Reference - How Amazon S3 authorises a request for an object operation" url="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-auth-workflow-object-operation.html"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T30" name="Use AWS services to access data on S3" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Number of AWS services can access S3 to execute their own functions. An attacker can use them to collect data, using their service role or service-linked roles. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;"UNIQUE": "iam:PassRole"&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="1" availability="1" easeOfExploitation="50"/>
+              <references>
+                <reference name="CVSS Medium 4.4" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"/>
+                <reference name="Mitre ATT&amp;CK" url="https://attack.mitre.org/tactics/TA0009"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+            <threat ref="S3T14" name="Use bucket to upload a malware or modify an object to include a malware" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;font size="4"&gt;&lt;span style="font-family: OpenSans;"&gt;S3 buckets are commonly used to distribute software. An attacker can upload malware in a bucket to better position it for later use, or directly change an object to include a malware (&lt;/span&gt;&lt;span style="font-family: OpenSans; color: rgb(17, 85, 204);"&gt;&lt;a href="https://www.securityweek.com/exposed-twilio-sdk-abused-malvertising-attack" target="_blank"&gt;example&lt;/a&gt;&lt;/span&gt;&lt;span style="font-family: OpenSans;"&gt;). &lt;/span&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;IAM Access&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;"UNIQUE": "s3:PutObject"&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="4"&gt;}&lt;/font&gt;&lt;/p&gt; 
+    &lt;div&gt; 
+     &lt;br&gt; 
+    &lt;/div&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="75" availability="1" easeOfExploitation="50"/>
+              <references>
+                <reference name="CVSS High 7.3" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:H/PR:L/UI:R/S:C/C:H/I:H/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0040" url="https://attack.mitre.org/tactics/TA0040"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Launch Another Attack"/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="s3-uc30-public-access-block-bucket" name="S3.UC30 Public Access Block (bucket)" desc="subclass of Bucket, FC24&#10;&#10;S3 Block Public Access (bucket) provides controls across at the individual S3 bucket level to ensure objects never have public access.&#10;&#10;IAM Permission and Action to Deny feature&#10;s3:PutBucketPublicAccessBlock Creates or modifies the PublicAccessBlock configuration for an Amazon S3 bucket." library="">
+          <threats>
+            <threat ref="S3.T52" name="Reduce bucket security by modify the bucket public access block" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Bucket public access block protect individual buckets from leakage (e.g. object ACL set to public). An attacker can remove this protection by modifying the bucket public access block. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"UNIQUE": "s3:PutBucketPublicAccessBlock"&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="1" integrity="75" availability="1" easeOfExploitation="25"/>
+              <references>
+                <reference name="CVSS (3.1) Medium 4.9" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0008" url="https://attack.mitre.org/tactics/TA0008"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Launch Another Attack"/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="s3-uc31-public-access-block-account" name="S3.UC31 Public Access Block (account)" desc="subclass of Bucket, FC25&#10;&#10;S3 Block Public Access (account) provides controls across an entire AWS account to ensure objects never have public access&#10;&#10;IAM Permission and Action to Deny feature&#10;s3:PutAccountPublicAccessBlock Creates or modifies the PublicAccessBlock configuration for an AWS account." library="">
+          <threats>
+            <threat ref="S3.T53" name="Reduce bucket security by modify the account public access block" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Account public access block protect all buckets of an AWS account from leakage (e.g. object ACL set to public). An attacker can remove this protection by modifying the account public access block.&lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"UNIQUE": "s3:PutAccountPublicAccessBlock"&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="1" integrity="75" availability="1" easeOfExploitation="25"/>
+              <references>
+                <reference name="CVSS (3.1) Medium 4.9" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0008" url="https://attack.mitre.org/tactics/TA0008"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Launch Another Attack"/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="s3-uc03-object-tagging" name="S3.UC03 Object Tagging" desc="subclass of Object upload/download, used by Bucket (S3.UC2.Bucket) You can tag objects (ref - https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html)." library="">
+          <threats>
+            <threat ref="S3.T33" name="Gain access by modifying or deleting important object tags" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Tags can be used for various reasons, including security classification or access management (via ABAC). An attacker can change the tagging of an object to another value enabling them to execute another attack. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"OR": ["s3:PutObjectTagging", "s3:DeleteObjectTagging"]&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="25" integrity="25" availability="1" easeOfExploitation="50"/>
+              <references>
+                <reference name="CVSS (3.1) Medium 4.4" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:H/PR:L/UI:N/S:C/C:L/I:L/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0004" url="https://attack.mitre.org/tactics/TA0004"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Launch Another Attack"/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="s3-uc04-torrent" name="S3.UC04.Torrent" desc="subclass of Object upload/download, used by Bucket&#10;&#10;[NOT RECOMMENDED] You can use the BitTorrent protocol to retrieve objects (ref https://docs.aws.amazon.com/AmazonS3/latest/dev/S3Torrent.html). Only available in the AWS Regions launched before May 30, 2016. The seed rate is 100KB.&#10;&#10;IAM Permission		Action&#10;s3:GetObjectTorrent      Returns torrent files from an object" library="">
+          <threats/>
+        </usecase>
+        <usecase ref="s3-uc05-batch" name="S3.UC05.Batch" desc="subclass of Object upload/download, used by Bucket&#10;&#10;S3 Batch Operations performs large-scale Batch Operations on Amazon S3 objects.&#10;&#10;IAM Permission		Action&#10;s3:CreateJob		Creates a new Amazon S3 Batch Operations job." library="">
+          <threats>
+            <threat ref="S3.T44" name="Exfiltrate, modify or delete objects using Batch" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;S3 Batch Operations require an IAM role (with proper trust policy), then can run operations including copy, or replace/delete object tags. An attacker can use Batch copy or modify objects to exfiltrate or change the access management of an object (if relying on tag). &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"AND": ["s3:CreateJob", "iam:PassRole"]&lt;/font&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;/p&gt; 
+    &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references>
+                <reference name="CVSS (3.1) Medium 6.2" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:H/PR:H/UI:N/S:C/C:H/I:L/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0040" url="https://attack.mitre.org/tactics/TA0040"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Manipulation"/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="s3-uc06-object-versioning" name="S3.UC06 Object Versioning" desc="subclass of Object upload/download, used by Bucket&#10;&#10;You can version your objects (ref  https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html).&#10;&#10;IAM Permission			Action to Deny&#10;s3:GetObjectVersion		Retrieves an object version from Amazon S3." library="">
+          <threats/>
+        </usecase>
+        <usecase ref="s3-uc06-tag-on-versioned-objects" name="S3.UC06 Tag on versioned objects" desc="subclass of Object tagging/Object versioning, used by Bucket&#10;&#10;You can tag objects versions (ref https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html)." library="">
+          <threats/>
+        </usecase>
+        <usecase ref="s3-uc07-acl-on-versioned-objects" name="S3.UC07 ACL on versioned objects" desc="subclass of Object versioning/ACL on versioned objects&#10;&#10;Amazon S3 access control lists (ACLs) enable you to manage access to object versions (ref https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#permissions).&#10;&#10;IAM Permission			Action to Deny&#10;s3:PutObjectVersionAcl	Sets the access control list (ACL) permissions for an object version. You must have WRITE_ACP permission to set the ACL of an object version." library="">
+          <threats/>
+        </usecase>
+        <usecase ref="s3-uc08-bucket-versioning" name="S3.UC08 Bucket Versioning" desc="subclass of Object versioning/Bucket&#10;&#10;Versioning is a means of keeping multiple variants of an object in the same bucket. You can use versioning to preserve, retrieve, and restore every version of every object stored in your Amazon S3 bucket. With versioning, you can easily recover from both unintended user actions and application failures (ref https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html).&#10;&#10;IAM Permission			Action to Deny&#10;s3:PutBucketVersioning	Sets the versioning state of an existing bucket." library="">
+          <threats>
+            <threat ref="S3.T48" name="Affect data protection by removing versioning" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="layoutArea"&gt; 
+  &lt;div class="column"&gt; 
+   &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Versioning can be used as a first level of integrity protection. An attacker can suspend versioning to affect data protection of a bucket. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"UNIQUE": "s3:PutBucketVersioning"&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references>
+                <reference name="CVSS (3.1) Low 2.7" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0040" url="https://attack.mitre.org/tactics/TA0040"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Manipulation"/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="s3-uc09-replication" name="S3.UC09 Replication" desc="subclass of Bucket versioning&#10;&#10;Replication enables automatic and asynchronous copying of objects of a bucket into another bucket. It can&#10;be cross-region or in the same region. Buckets configured for replication can be in the same AWS account or by different accounts. It is usually to backup S3 data, data centralisation, or multi-region applications.&#10;&#10;IAM Permission					Action to Deny&#10;s3:PutReplicationConfiguration	Creates a new replication configuration (or replaces an existing one, if present)." library="">
+          <threats>
+            <threat ref="S3.T49" name="Affect data protection by removing replication" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="layoutArea"&gt; 
+  &lt;div class="column"&gt; 
+   &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Replication can be used as a level of integrity protection and backup. An attacker can remove replication to affect the data protection. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;&lt;b&gt;IAM Access&lt;/b&gt;&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;{&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;"UNIQUE": "s3:PutReplicationConfiguration"&lt;/font&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;/p&gt; 
+   &lt;p&gt;&lt;font face="OpenSans" size="2"&gt;}&lt;/font&gt;&lt;/p&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="1" integrity="25" availability="1" easeOfExploitation="25"/>
+              <references>
+                <reference name="CVSS (3.1) Low 2.7" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0040" url="https://attack.mitre.org/tactics/TA0040"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Manipulation"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T2" name="Unauthorised access to data via bucket replication" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-size: 11.000000pt; font-family: 'OpenSans'"&gt;Replication allows you to replicate objects, their metadata and change ownership. The configuration focuses on new objects only (old objects replication requires &lt;/span&gt;&lt;span style="font-size: 11.000000pt; font-family: 'OpenSans'; color: rgb(6.670000%, 33.300000%, 80.000000%)"&gt;&lt;a href="https://aws.amazon.com/blogs/storage/replicating-existing-objects-between-s3-buckets/" target="_blank"&gt;a ticket to AWS Support&lt;/a&gt;&lt;/span&gt;&lt;span style="font-size: 11.000000pt; font-family: 'OpenSans'"&gt;). An attacker can configure replication on a bucket to replicate objects (or its metadata or tagging) in a bucket they control to exfiltrate data. &lt;/span&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references>
+                <reference name="CVSS (3.1) Medium 4.5" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:A/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+      </usecases>
+    </riskPattern>
+    <riskPattern uuid="c7c47484-7222-43fa-bfc6-a8791d7403f2" ref="s3-rp2-other-uses" name="S3.RP2 Other Uses" desc="Others can use their own S3 service to impact you in some ways.">
+      <tags>
+        <tag tag="class"/>
+      </tags>
+      <weaknesses/>
+      <countermeasures/>
+      <usecases>
+        <usecase ref="s3-rp2-uc1-other-uses" name="S3.RP2.UC1 Other Uses" desc="Others can use their own S3 service to impact you in some ways." library="">
+          <threats>
+            <threat ref="S3.T10" name="Exfiltrate data by using the public endpoint to upload data in an attacker bucket, using external credentials" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;AWS authenticates per AWS account. An attacker can bring its own credentials to exfiltrate data to external S3 buckets through the S3 public endpoint. It can be a non-authenticated user as well. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="75" integrity="1" availability="1" easeOfExploitation="100"/>
+              <references>
+                <reference name="CVSS (3.1) Medium 6.2" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T23" name="Phishing using trademarks" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;font size="4"&gt;&lt;span style="font-family: OpenSans;"&gt;S3 provides URLs to buckets using the bucket name (i.e. "&lt;/span&gt;&lt;span style="font-family: OpenSans; font-style: italic;"&gt;mybucket&lt;/span&gt;&lt;span style="font-family: OpenSans;"&gt;.s3.amazonaws.com"). An attacker can create a bucket with the name of your trademark to phish users. &lt;/span&gt;&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="25" integrity="1" availability="1" easeOfExploitation="75"/>
+              <references>
+                <reference name="CVSS (3.1) Low 3.1" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Data Theft"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T19" name="Recon of AWS root account emails using email ACL grantee feature" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;font size="4"&gt;&lt;span style="font-family: OpenSans;"&gt;S3 allows you to add root account emails in ACL (&lt;/span&gt;&lt;span style="font-family: OpenSans; color: rgb(17, 85, 204);"&gt;&lt;a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#specifying-grantee" target="_blank"&gt;ref&lt;/a&gt;&lt;/span&gt;&lt;span style="font-family: OpenSans;"&gt;), and as well resolve the given canonical ID into an AWS account ID (via a bucket policy, which automatically resolves a canonical ID into an ARN). An attacker can do trial-and- error to discover existing AWS root account emails and related AWS account ID (even if you do not use the region where the feature is available); and use this information to launch another attack (e.g. phishing). &lt;/span&gt;&lt;/font&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="25" integrity="1" availability="1" easeOfExploitation="75"/>
+              <references>
+                <reference name="CVSS (3.1) Low 2.0" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:P/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Launch Another Attack"/>
+              </customFields>
+            </threat>
+            <threat ref="S3.T32" name="Recon on information about a bucket" state="Expose" source="MANUAL" owner="ddoughty" library="">
+              <desc>&lt;div class="page"&gt; 
+ &lt;div class="section" style="background-color: rgb(100.000000%, 100.000000%, 100.000000%)"&gt; 
+  &lt;div class="layoutArea"&gt; 
+   &lt;div class="column"&gt; 
+    &lt;p&gt;&lt;span style="font-family: OpenSans;"&gt;&lt;font size="4"&gt;Error messages can give some information about specific buckets. An attacker who knows the bucket name can find its AWS account and AWS Region. To find the AWS Region, use "aws s3 presign bucket-name/whatever" the error message will give you the region if not in the right region. To find the account, look at the call in CloudTrail (with S3 data enabled) under the resource section. &lt;/font&gt;&lt;/span&gt;&lt;/p&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+&lt;/div&gt;</desc>
+              <riskRating confidentiality="25" integrity="1" availability="1" easeOfExploitation="75"/>
+              <references>
+                <reference name="CVSS (3.1) Medium 4.3" url="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N"/>
+                <reference name="Mitre ATT&amp;CK TA0010" url="https://attack.mitre.org/tactics/TA0010"/>
+              </references>
+              <weaknesses/>
+              <countermeasures/>
+              <customFields>
+                <customField ref="CF1.T1.Goal" value="Launch Another Attack"/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+      </usecases>
+    </riskPattern>
+  </riskPatterns>
+  <rules/>
+</library>

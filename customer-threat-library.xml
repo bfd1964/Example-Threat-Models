@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library ref="customer-threat-library" name="Custom Threat Library" revision="1" tags="Custom LIbrary">
+  <desc>Create a simple threat library to describe how a customer would use their own Risk Patterns and Counter Measures</desc>
+  <categoryComponents>
+    <categoryComponent ref="client-side" name="Client-side"/>
+  </categoryComponents>
+  <componentDefinitions>
+    <componentDefinition ref="custom-web-ui" name="Custom Web UI" desc="" categoryRef="client-side">
+      <riskPatterns>
+        <riskPattern ref="http-threat-pattern"/>
+      </riskPatterns>
+    </componentDefinition>
+    <componentDefinition ref="laptop-custom" name="CT-Hardened-Laptop" desc="Personal Device" categoryRef="client-side">
+      <riskPatterns>
+        <riskPattern ref="http-threat-pattern"/>
+      </riskPatterns>
+    </componentDefinition>
+  </componentDefinitions>
+  <supportedStandards/>
+  <riskPatterns>
+    <riskPattern uuid="ba7afe59-e973-4337-ad71-eff7aef6044a" ref="http-threat-pattern" name="Custom Threat Pattern #1" desc="Associate this with HTTP">
+      <tags>
+        <tag tag="HTTP"/>
+      </tags>
+      <weaknesses/>
+      <countermeasures>
+        <countermeasure ref="implment-https-encryption" name="Implment HTTPS (SSL) encryption" platform="" cost="0" risk="0" state="Required" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>Implement HTTPS(SSL) encryption between low trust Trust Zones and any other trust zone</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-02-07T12:52:46.683">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+      </countermeasures>
+      <usecases>
+        <usecase ref="http-disallowed" name="HTTP Disallowed" desc="Do not allow the use of native HTTP when transferring sensitive data" library="">
+          <threats>
+            <threat ref="http-provides-non-encrypted-data-transfer" name="HTTP provides non-encrypted data transfer" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc>The use of HTTP protocol in data flow when transferring customer data, credit card data or any personal identifiable information makes this information open, and easily accessible by 3rd parties. Particularly sensitive when transitioning from low trust trust zones.</desc>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references>
+                <reference name="Why HTTPS" url="https://www.venafi.com/blog/what-are-differences-between-http-https-0#:~:text=HTTPS%20is%20HTTP%20with%20encryption,uses%20HTTPS%20has%20HTTPS%3A%2F%2F."/>
+              </references>
+              <weaknesses/>
+              <countermeasures>
+                <countermeasure ref="implment-https-encryption" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+      </usecases>
+    </riskPattern>
+  </riskPatterns>
+  <rules>
+    <rule name="CR0001-Component Rule" module="component" generatedByGui="true">
+      <conditions/>
+      <actions/>
+    </rule>
+    <rule name="DF0001 - Data Flow Rule - Enforce HTTPS" module="dataflow" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_DATAFLOW_NOT_CONTAINS_TAG" field="id" value="HTTPS"/>
+      </conditions>
+      <actions>
+        <action project="" value="NotificationType.ALERT_::_HTTPS Not Enforced_::_HTTPS not Implemented" name="INSERT_DATAFLOW_NOTIFICATION"/>
+      </actions>
+    </rule>
+    <rule name="DF0002 - Dataflow Condition Rule" module="threatDataflow" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_ORIGIN_TRUSTZONE" field="id" value="f0ba7722-39b6-4c81-8290-a30a248bb8d9_::_internet"/>
+        <condition name="CONDITION_DESTINATION_TRUSTZONE" field="id" value="b61d6911-338d-46a8-9f39-8dcd24abfe91_::_public-cloud"/>
+      </conditions>
+      <actions/>
+    </rule>
+    <rule name="MR0001 - Main Rule - Create Component on Project creation" module="main" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_PROJECT_IS_CREATING" field="id" value=""/>
+      </conditions>
+      <actions/>
+    </rule>
+    <rule name="Q0001: What is the user profile?" module="component" generatedByGui="true">
+      <conditions/>
+      <actions/>
+    </rule>
+    <rule name="TH0001 - Threat Component Condition Rule - Component in Internet" module="threatComponent" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_IS_IN_TRUSTZONE" field="id" value="f0ba7722-39b6-4c81-8290-a30a248bb8d9_::_internet"/>
+      </conditions>
+      <actions/>
+    </rule>
+  </rules>
+</library>

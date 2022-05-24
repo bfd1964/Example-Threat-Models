@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library ref="an-example-library" name="An Example Library" revision="2" tags="">
+  <desc/>
+  <categoryComponents>
+    <categoryComponent ref="custom-client-side" name="Custom-Client-side"/>
+  </categoryComponents>
+  <componentDefinitions>
+    <componentDefinition ref="custom-web-ui" name="Custom Web UI" desc="" categoryRef="custom-client-side" visible="true">
+      <riskPatterns>
+        <riskPattern ref="example-risk-pattern"/>
+      </riskPatterns>
+    </componentDefinition>
+  </componentDefinitions>
+  <supportedStandards/>
+  <riskPatterns>
+    <riskPattern uuid="bac572ff-b5e8-4ce9-968d-5cd57bd0d98a" ref="example-risk-pattern" name="Example Risk Pattern" desc="This is just an example risk pattern">
+      <tags>
+        <tag tag="SOAP"/>
+      </tags>
+      <weaknesses>
+        <weakness ref="example-weakness" name="Example Weakness" state="0" impact="100">
+          <desc/>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-29T13:54:50.939">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </weakness>
+      </weaknesses>
+      <countermeasures>
+        <countermeasure ref="example-countermeasure" name="Example Countermeasure" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc/>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="1"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-29T13:55:05.206">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="fifth-countermeasure" name="fifth countermeasure" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc/>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-29T15:27:17.963">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="fourth-example-countermeasure" name="fourth example countermeasure" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc/>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-29T15:27:04.455">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="second-example-countermeasure" name="Second Example CounterMeasure" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc/>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-29T14:49:38.295">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="sixth-example-countermeasure" name="Sixth Example Countermeasure" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc/>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-29T15:27:43.149">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+        <countermeasure ref="third-example-countermeasure" name="Third Example Countermeasure" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;div style="text-align: right;"&gt; 
+ &lt;br&gt; 
+&lt;/div&gt;</desc>
+          <implementations/>
+          <references/>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-03-29T14:49:53.750">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+      </countermeasures>
+      <usecases>
+        <usecase ref="example-use-case-no-1" name="Example Use Case No.1" desc="" library="">
+          <threats>
+            <threat ref="example-threat-no-1" name="Example Threat No.1" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc/>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses>
+                <weakness ref="example-weakness">
+                  <countermeasures>
+                    <countermeasure ref="example-countermeasure" mitigation="100"/>
+                    <countermeasure ref="fifth-countermeasure" mitigation="100"/>
+                    <countermeasure ref="fourth-example-countermeasure" mitigation="100"/>
+                    <countermeasure ref="second-example-countermeasure" mitigation="100"/>
+                  </countermeasures>
+                </weakness>
+              </weaknesses>
+              <countermeasures>
+                <countermeasure ref="example-countermeasure" mitigation="100"/>
+                <countermeasure ref="fifth-countermeasure" mitigation="100"/>
+                <countermeasure ref="fourth-example-countermeasure" mitigation="100"/>
+                <countermeasure ref="second-example-countermeasure" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+            <threat ref="example-threat-no-2" name="Example Threat No.2" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc/>
+              <riskRating confidentiality="100" integrity="100" availability="100" easeOfExploitation="100"/>
+              <references/>
+              <weaknesses/>
+              <countermeasures>
+                <countermeasure ref="sixth-example-countermeasure" mitigation="100"/>
+                <countermeasure ref="third-example-countermeasure" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+        <usecase ref="example-use-case-no-2" name="Example Use Case No.2" desc="" library="">
+          <threats/>
+        </usecase>
+      </usecases>
+    </riskPattern>
+  </riskPatterns>
+  <rules>
+    <rule name="Act on Invalid Dataflow" module="component" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_CONCLUSION_COMPONENT_EXISTS" field="id" value="Conclusion_Unauthorised_Dataflow"/>
+      </conditions>
+      <actions>
+        <action project="" value="PCF0007_::_Unauthorised Dataflow, you are not allowed to transmit data to an insecure network directly to the internet_::_vpcf0007" name="UPDATE_UDT"/>
+      </actions>
+    </rule>
+    <rule name="An Example Library-Threat Dataflow - Implement Countermeasure" module="threatDataflow" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_DESTINATION_TRUSTZONE" field="id" value="2ab4effa-40b7-4cd2-ba81-8247d29a6f2d_::_private-secured"/>
+      </conditions>
+      <actions>
+        <action project="an-example-library" value="fifth-countermeasure_::_vfifth_countermeasure" name="IMPLEMENT_CONTROL_ORIGIN_IN_SESSION"/>
+      </actions>
+    </rule>
+    <rule name="CR0002 - Question A - Answers" module="component" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_COMPONENT_QUESTION_GROUP_EXISTS" field="id" value="EXAMPLE Question Group A"/>
+      </conditions>
+      <actions>
+        <action project="" value="Question A - Answer 1_::_This is the first Answer to Question A_::_This is a Description" name="INSERT_COMPONENT_QUESTION"/>
+        <action project="" value="Question A - Answer 2_::_This is the second Answer to Question A_::_This is a second Description" name="INSERT_COMPONENT_QUESTION"/>
+        <action project="" value="Question A - Answer 3_::_This is the third Answer to Question A_::_This is a third Description" name="INSERT_COMPONENT_QUESTION"/>
+      </actions>
+    </rule>
+    <rule name="CR0002 - Question A - Response" module="component" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_COMPONENT_QUESTION" field="id" value="Question A - Answer 1"/>
+      </conditions>
+      <actions>
+        <action project="" value="EXAMPLE Supplementary Question Group A1_::_EXAMPLE TAB_::_This is supplementary question A1_::_9003_::_false_::_false_::_(and not alot of people know that)" name="INSERT_COMPONENT_QUESTION_GROUP"/>
+      </actions>
+    </rule>
+    <rule name="CR0002 - Question A - Supplementary A1 - Answers" module="component" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_COMPONENT_QUESTION_GROUP_EXISTS" field="id" value="EXAMPLE Supplementary Question Group A1"/>
+      </conditions>
+      <actions>
+        <action project="" value="CR002 - Question A - Supplementary Answer 1_::_Supplementary Answer 1_::_Description of Supplementary Answer 1" name="INSERT_COMPONENT_QUESTION"/>
+        <action project="" value="CR002 - Question A - Supplementary Answer 2_::_Supplementary Answer 2_::_Description of Supplementary Answer 2" name="INSERT_COMPONENT_QUESTION"/>
+      </actions>
+    </rule>
+    <rule name="CR0002 - Question A - Supplementary A1 - Response" module="component" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_COMPONENT_QUESTION" field="id" value="CR002 - Question A - Supplementary Answer 1"/>
+      </conditions>
+      <actions>
+        <action project="" value="NotificationType.INFO_::_CR0002 - Question A - Supplementary A1 -  A1 Response_::_CR0002 - Question A - Supplementary A1 -  A1 Response" name="INSERT_COMPONENT_NOTIFICATION"/>
+      </actions>
+    </rule>
+    <rule name="CR0002- Component Question Category and Group" module="component" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_COMPONENT_DEFINITION" field="id" value="active-directory"/>
+      </conditions>
+      <actions>
+        <action project="" value="EXAMPLE Question Group A_::_EXAMPLE TAB_::_What is you question A_::_9000_::_false_::_false_::_(Description of the question you are asking)" name="INSERT_COMPONENT_QUESTION_GROUP"/>
+        <action project="" value="EXAMPLE Question Group B_::_EXAMPLE TAB_::_What is you question B_::_9001_::_false_::_false_::_(Description of the question you are asking)" name="INSERT_COMPONENT_QUESTION_GROUP"/>
+        <action project="" value="EXAMPLE Question Group C_::_ANOTHER EXAMPLE TAB_::_What is you question C_::_9002_::_false_::_false_::_(Description of the question you are asking)" name="INSERT_COMPONENT_QUESTION_GROUP"/>
+      </actions>
+    </rule>
+    <rule name="From Private Cloud to Internet" module="dataflow" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_ORIGIN_TRUSTZONE" field="id" value="11588522-4bcf-42ae-a857-f495ce135f63_::_private-cloud"/>
+        <condition name="CONDITION_DESTINATION_TRUSTZONE" field="id" value="f0ba7722-39b6-4c81-8290-a30a248bb8d9_::_internet"/>
+      </conditions>
+      <actions>
+        <action project="" value="ConclusionType.ERROR_::_Conclusion_Unauthorised_Dataflow_::_Unauthorised Dataflow, you are not allowed to transmit data to an insecure network directly to the internet" name="INSERT_CONCLUSION_DESTINATION_COMPONENT"/>
+        <action project="" value="NotificationType.ALERT_::_Notification_Unauthorised_Dataflow_::_Unauthorised Dataflow, you are not allowed to transmit data to an insecure network directly to the internet" name="INSERT_DATAFLOW_NOTIFICATION"/>
+      </actions>
+    </rule>
+    <rule name="Generate a notification based on the value of a custom field" module="threatComponent" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_USER_DEFINED_FIELD" field="$project" value="Project_::_PCF0004_::_==_::_Hello"/>
+      </conditions>
+      <actions>
+        <action project="" value="NotificationType.INFO_::_ALRT0001_::_Invisible Field is set" name="INSERT_COMPONENT_NOTIFICATION"/>
+      </actions>
+    </rule>
+    <rule name="Import my Risk Pattern" module="component" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_COMPONENT_DEFINITION" field="id" value="active-directory"/>
+      </conditions>
+      <actions>
+        <action project="an-example-library" value="an-example-library_::_example-risk-pattern" name="IMPORT_RISK_PATTERN"/>
+      </actions>
+    </rule>
+    <rule name="Set Conclusion Component" module="component" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_COMPONENT_QUESTION" field="id" value="ANS001"/>
+      </conditions>
+      <actions>
+        <action project="" value="ConclusionType.ADVICE_::_Conclusion.Answer.One_::_This is the conclusion based on selecting Answer One" name="INSERT_COMPONENT_CONCLUSION"/>
+      </actions>
+    </rule>
+    <rule name="Set Conclusion Main" module="main" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_USER_DEFINED_FIELD" field="$project" value="Project_::_PCF0001_::_==_::_One"/>
+      </conditions>
+      <actions>
+        <action project="" value="ConclusionType.ADVICE_::_Conclusion.Main.CPD.One_::_Our Main Questionnaire set the custom project data value to One" name="INSERT_CONCLUSION"/>
+      </actions>
+    </rule>
+    <rule name="Threat Dataflow - Implement Countermeasure" module="threatDataflow" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_CLASSIFICATION" field="id" value="personally-identifiable-information"/>
+      </conditions>
+      <actions>
+        <action project="an-example-library" value="sixth-example-countermeasure_::_vsixth_example_countermeasure" name="IMPLEMENT_CONTROL_DESTINATION_IN_SESSION"/>
+      </actions>
+    </rule>
+  </rules>
+</library>
