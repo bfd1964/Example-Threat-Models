@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library ref="questionnaire-example" name="Questionnaire Example" revision="1" tags="">
+  <desc/>
+  <categoryComponents/>
+  <componentDefinitions/>
+  <supportedStandards/>
+  <riskPatterns/>
+  <rules>
+    <rule name="Archiecture Questionnaire - Definition" module="main" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_PROJECT_IS_CREATING" field="id" value=""/>
+      </conditions>
+      <actions>
+        <action project="" value="Project Definition_::_Definition_::_What type of project is this?_::_9900_::_true_::_false_::_" name="INSERT_QUESTION_GROUP"/>
+      </actions>
+    </rule>
+    <rule name="Archiecture Questionnaire - Definition - Responses - Hybris Project" module="main" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_QUESTION" field="id" value="hyrbis"/>
+      </conditions>
+      <actions>
+        <action project="" value="NotificationType.INFO_::_Definition - Hybris_::_Hybris Ecommerce Project - Respond To All Questionnaires for the configurable components" name="INSERT_NOTIFICATION"/>
+      </actions>
+    </rule>
+    <rule name="Archiecture Questionnaire - Definition - Responses - Java Project" module="main" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_QUESTION" field="id" value="Java"/>
+      </conditions>
+      <actions>
+        <action project="" value="NotificationType.INFO_::_Definition - Java_::_Java Retail Project - Respond To All Questionnaires for the configurable components" name="INSERT_NOTIFICATION"/>
+        <action project="java-application-back-end-template" value="java-application-back-end-template" name="IMPORT_TEMPLATE"/>
+      </actions>
+    </rule>
+    <rule name="Architecture Questionnaire - Definition - Answers" module="main" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_QUESTION_GROUP_EXISTS" field="id" value="Project Definition_::_group"/>
+      </conditions>
+      <actions>
+        <action project="" value=".NET_::_.net_::_" name="INSERT_QUESTION"/>
+        <action project="" value="Java_::_java_::_" name="INSERT_QUESTION"/>
+        <action project="" value="hyrbis_::_hybris_::_" name="INSERT_QUESTION"/>
+      </actions>
+    </rule>
+    <rule name="Architecture Questionnaire - Definition - Responses - .NET Project" module="main" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_QUESTION" field="id" value=".NET"/>
+      </conditions>
+      <actions>
+        <action project="" value="NotificationType.INFO_::_Definition - Java_::_.NET Retail Application Project - Please Define Your Architecture - No Templates Available" name="INSERT_NOTIFICATION"/>
+      </actions>
+    </rule>
+    <rule name="Nginx Questionnaire - Data Transport - Main Questions" module="component" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_COMPONENT_DEFINITION" field="id" value="nginx"/>
+      </conditions>
+      <actions>
+        <action project="" value="Nginx -Data Transport_::_Data Transport_::_How will data be received from the client_::_9000_::_true_::_false_::_" name="INSERT_COMPONENT_QUESTION_GROUP"/>
+      </actions>
+    </rule>
+    <rule name="Nginx Questionnaire - Data Transport - Main Questions - Q1 - Answers" module="component" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_COMPONENT_QUESTION_GROUP_EXISTS" field="id" value="Nginx -Data Transport_::_group"/>
+      </conditions>
+      <actions>
+        <action project="" value="Nginx Data Transport - Answer 1_::_Encrypted communication, e.g. HTTPS, SSL/TLS, etc._::_" name="INSERT_COMPONENT_QUESTION"/>
+        <action project="" value="Nginx Data Transport - Answer 2_::_Unencrypted communications, e.g. plain HTTP or TCP_::_" name="INSERT_COMPONENT_QUESTION"/>
+      </actions>
+    </rule>
+    <rule name="Nginx Questionnaire - Data Transport - Main Questions - Response HTTP in use" module="component" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_COMPONENT_QUESTION" field="id" value="Nginx Data Transport - Answer 2"/>
+      </conditions>
+      <actions>
+        <action project="CS-Default" value="CS-Default_::_HTTP-SERVICE_::_READ OR POST DATA_::_CAPEC-117" name="IMPORT_SPECIFIC_RISK"/>
+        <action project="" value="NotificationType.ALERT_::_Nginx HTTP headers exposed_::_HTTP headers expose sensitive data" name="INSERT_COMPONENT_NOTIFICATION"/>
+      </actions>
+    </rule>
+    <rule name="Nginx Questionnaire - Data Transport - Main Questions - Response HTTPS in use - Supplementary Questions" module="component" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_COMPONENT_QUESTION" field="id" value="Nginx Data Transport - Answer 2"/>
+      </conditions>
+      <actions>
+        <action project="" value="Nginx Questionnaire - Data Transport Response HTTPS in use_::_Data Transport_::_How will the encryption be applied?_::_9001_::_true_::_false_::_" name="INSERT_COMPONENT_QUESTION_GROUP"/>
+      </actions>
+    </rule>
+    <rule name="Nginx Questionnaire - Data Transport - Supplementary Question - Answers" module="component" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_COMPONENT_QUESTION_GROUP_EXISTS" field="id" value="Nginx Questionnaire - Data Transport Response HTTPS in use_::_group"/>
+      </conditions>
+      <actions>
+        <action project="" value="Nginx Data Transport - Supplementary Q - Answer 1_::_At the message level_::_" name="INSERT_COMPONENT_QUESTION"/>
+        <action project="" value="Nginx Data Transport - Supplementary Q - Answer 2_::_At the transport level, e,g, SSL/TLS applied to the whole connection_::_" name="INSERT_COMPONENT_QUESTION"/>
+      </actions>
+    </rule>
+    <rule name="Nginx Questionnaire - Data Transport - Supplementary Question - Response Message Level In Use" module="component" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_COMPONENT_QUESTION" field="id" value="Nginx Data Transport - Answer 2"/>
+      </conditions>
+      <actions>
+        <action project="" value="NotificationType.ALERT_::_Nginx Message Level Response_::_Message Level Encryption" name="INSERT_COMPONENT_NOTIFICATION"/>
+      </actions>
+    </rule>
+    <rule name="Nginx Questionnaire - Data Transport - Supplementary Question - Response Transport Level In Use" module="component" generatedByGui="true">
+      <conditions>
+        <condition name="CONDITION_COMPONENT_QUESTION" field="id" value="Nginx Data Transport - Answer 2"/>
+      </conditions>
+      <actions>
+        <action project="" value="NotificationType.ALERT_::_Nginx Message Level Response_::_End to end transport Level Encryption" name="INSERT_COMPONENT_NOTIFICATION"/>
+      </actions>
+    </rule>
+  </rules>
+</library>
