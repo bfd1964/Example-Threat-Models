@@ -1,15 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <library ref="questionnaire-example" name="Questionnaire Example" revision="1" tags="">
   <desc/>
-  <categoryComponents/>
-  <componentDefinitions/>
+  <categoryComponents>
+    <categoryComponent ref="custom" name="Custom"/>
+  </categoryComponents>
+  <componentDefinitions>
+    <componentDefinition ref="nginx" name="nginx" desc="&lt;span style=&quot;color: rgb(77, 81, 86); font-family: arial, sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);&quot;&gt;is a web server that can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache. The software was created by Igor Sysoev and publicly released in 2004. Nginx is free and open-source software, released under the terms of the 2-clause BSD license&lt;/span&gt;" categoryRef="custom" visible="true">
+      <riskPatterns>
+        <riskPattern ref="nginx-configuration"/>
+      </riskPatterns>
+    </componentDefinition>
+  </componentDefinitions>
   <supportedStandards/>
-  <riskPatterns/>
+  <riskPatterns>
+    <riskPattern uuid="6e8e8f37-8384-40d3-8b8f-d3c4d6ccb079" ref="nginx-configuration" name="Nginx Configuration" desc="">
+      <tags/>
+      <weaknesses/>
+      <countermeasures>
+        <countermeasure ref="configure-file-descriptors-appropriately" name="Configure File Descriptors Appropriately" platform="" cost="0" risk="0" state="Recommended" owner="david@doughty.uk.net" library="" source="MANUAL">
+          <desc>&lt;p&gt;Each connection from an NGINX worker process to a client or upstream server consumes an FD. When NGINX acts as a web server, it uses one FD for the client connection and one FD per served file, for a minimum of two FDs per client (but most web pages are built from many files). When it acts as a proxy server, NGINX uses one FD each for the connection to the client and upstream server, and potentially a third FD for the file used to store the server’s response temporarily. As a caching server, NGINX behaves like a web server for cached responses and like a proxy server if the cache is empty or expired.&lt;/p&gt; 
+&lt;p&gt;NGINX also uses an FD per log file and a couple FDs to communicate with master process, but usually these numbers are small compared to the number of FDs used for connections and files.&lt;/p&gt; 
+&lt;p&gt;UNIX offers several ways to set the number of FDs per process:&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;The&amp;nbsp;&lt;code&gt;ulimit&lt;/code&gt;&amp;nbsp;command if you start NGINX from a shell&lt;/li&gt; 
+ &lt;li&gt;The&amp;nbsp;&lt;code&gt;init&lt;/code&gt;&amp;nbsp;script or&amp;nbsp;&lt;code&gt;systemd&lt;/code&gt;&amp;nbsp;service manifest variables if you start NGINX as a service&lt;/li&gt; 
+ &lt;li&gt;The&amp;nbsp;&lt;span style="box-sizing: inherit; font-weight: 700; border: 0px; font-family: inherit; font-size: 15px; font-style: inherit; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;"&gt;/etc/security/limits.conf&lt;/span&gt;&amp;nbsp;file&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;However, the method to use depends on how you start NGINX, whereas&amp;nbsp;&lt;code&gt;worker_rlimit_nofile&lt;/code&gt;&amp;nbsp;works no matter how you start NGINX.&lt;/p&gt; 
+&lt;p&gt;There is also a system‑wide limit on the number of FDs, which you can set with the OS’s&amp;nbsp;&lt;span style="box-sizing: inherit; border: 0px; font-family: inherit; font-style: inherit; font-weight: inherit; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; white-space: nowrap;"&gt;&lt;code&gt;sysctl&lt;/code&gt;&amp;nbsp;&lt;code&gt;fs.file-max&lt;/code&gt;&lt;/span&gt;&amp;nbsp;command. It is usually large enough, but it is worth verifying that the maximum number of file descriptors all NGINX worker processes might use (&lt;span style="box-sizing: inherit; border: 0px; font-family: inherit; font-style: inherit; font-weight: inherit; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; white-space: nowrap;"&gt;&lt;code&gt;worker_rlimit_nofile&lt;/code&gt;&amp;nbsp;&lt;code&gt;*&lt;/code&gt;&amp;nbsp;&lt;a target="_blank" href="https://nginx.org/en/docs/ngx_core_module.html#worker_processes"&gt;&lt;code&gt;worker_processes&lt;/code&gt;&lt;/a&gt;&lt;/span&gt;) is significantly less than&amp;nbsp;&lt;code&gt;fs.file‑max&lt;/code&gt;. If NGINX somehow uses all available FDs (for example, during a DoS attack), it becomes impossible even to log in to the machine to fix the issue.&lt;/p&gt;</desc>
+          <implementations/>
+          <references>
+            <reference name="Full Example for Configuring Nginx" url="https://www.nginx.com/resources/wiki/start/topics/examples/full/#"/>
+            <reference name="Top 10 Nginx Configuration Mistakes" url="https://www.nginx.com/blog/avoiding-top-10-nginx-configuration-mistakes/"/>
+          </references>
+          <standards/>
+          <customFields>
+            <customField ref="Ccf-Priority" value="3"/>
+          </customFields>
+          <test expiryDate="" expiryPeriod="0">
+            <steps/>
+            <notes/>
+            <source filename="" args="" type="Manual" result="Not Tested" enabled="true" timestamp="2022-08-03T12:36:42.312">
+              <output/>
+            </source>
+            <references/>
+            <customFields/>
+          </test>
+        </countermeasure>
+      </countermeasures>
+      <usecases>
+        <usecase ref="nginx-configuration" name="Top 10 Nginx Configuration Mistakes" desc="" library="">
+          <threats>
+            <threat ref="not-enough-file-descriptors-per-worker" name="Not Enough File Descriptors per Worker makes the service susceptible to DDoS Attack" state="Expose" source="MANUAL" owner="david@doughty.uk.net" library="">
+              <desc>&lt;p&gt;The&amp;nbsp;&lt;a target="_blank" href="https://nginx.org/en/docs/ngx_core_module.html#worker_connections"&gt;&lt;code&gt;worker_connections&lt;/code&gt;&lt;/a&gt;&amp;nbsp;directive sets the maximum number of simultaneous connections that a NGINX worker process can have open (the default is&amp;nbsp;512). All types of connections (for example, connections with proxied servers) count against the maximum, not just client connections. But it’s important to keep in mind that ultimately there is another limit on the number of simultaneous connections per worker: the operating system limit on the maximum number of file descriptors (FDs) allocated to each process. In modern UNIX distributions, the default limit is&amp;nbsp;1024.&lt;/p&gt; 
+&lt;p&gt;For all but the smallest NGINX deployments, a limit of&amp;nbsp;512 connections per worker is probably too small. Indeed, the default&amp;nbsp;&lt;span style="box-sizing: inherit; font-weight: 700; border: 0px; font-family: inherit; font-style: inherit; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;"&gt;nginx.conf&lt;/span&gt;&amp;nbsp;file we distribute with NGINX Open Source binaries and NGINX&amp;nbsp;Plus increases it to&amp;nbsp;1024.&lt;/p&gt; 
+&lt;p&gt;The common configuration mistake is not increasing the limit on FDs to at least twice the value of&amp;nbsp;&lt;code&gt;worker_connections&lt;/code&gt;. The fix is to set that value with the&amp;nbsp;&lt;a target="_blank" href="https://nginx.org/en/docs/ngx_core_module.html#worker_rlimit_nofile"&gt;&lt;code&gt;worker_rlimit_nofile&lt;/code&gt;&lt;/a&gt;&amp;nbsp;directive in the main configuration context.&lt;/p&gt;</desc>
+              <riskRating confidentiality="25" integrity="25" availability="75" easeOfExploitation="50"/>
+              <references>
+                <reference name="Top 10 Nginx Configuration Mistakes" url="https://www.nginx.com/blog/avoiding-top-10-nginx-configuration-mistakes/"/>
+              </references>
+              <weaknesses/>
+              <countermeasures>
+                <countermeasure ref="configure-file-descriptors-appropriately" mitigation="100"/>
+              </countermeasures>
+              <customFields>
+                <customField ref="Tcf-STRIDE" value=""/>
+              </customFields>
+            </threat>
+          </threats>
+        </usecase>
+      </usecases>
+    </riskPattern>
+  </riskPatterns>
   <rules>
     <rule name="Archiecture Questionnaire - Definition" module="main" generatedByGui="true">
-      <conditions>
-        <condition name="CONDITION_PROJECT_IS_CREATING" field="id" value=""/>
-      </conditions>
+      <conditions/>
       <actions>
         <action project="" value="Project Definition_::_Definition_::_What type of project is this?_::_9900_::_true_::_false_::_" name="INSERT_QUESTION_GROUP"/>
       </actions>
