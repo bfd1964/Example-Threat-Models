@@ -1,6 +1,7 @@
 ##!/usr/bin/env bash
 #
-# Pull a list of projects from an Instance
+# Pull a list of projects from an Instance,
+# generate a list of reference IDs for projects which can then be used to seed other API calls
 #
 # Script use
 #
@@ -8,12 +9,19 @@
 #
 # This script uses the jq json processing command line reference https://stedolan.github.io/jq/
 
-apitoken="use your own token";
-projectsfile="./projects.json"
-linecount=0
+apitoken=d6e2d270-35ab-4621-b63d-29ca18b73828;
+projectsfile="./projects.json";
 
-function process_json() {
-  echo "$linecount: $1"
+function process_json_for_projects() {
+  #Strip double quotes from the content
+  line=$(sed 's/\"//g' <<< $1);
+  #split the line at the delimiter
+  IFS=': ' read -r name value <<< "$line";
+  if [[ "$name" == "Reference" ]]
+  then
+    #Output the value of the reference id from the json
+    echo "$value"
+  fi
 }
 
 while getopts u: flag
@@ -41,7 +49,7 @@ echo "Token Header: $token_header";
 curl -vvv --silent --location --request GET "$api_url" \
 --header 'Accept: application/json' \
 --header "$token_header" \
-| jq '.[] | {Name: .name, Referemce: .ref}' > "$projectsfile"
+| jq '.[] | {Name: .name, Reference: .ref}' > "$projectsfile"
 
 #
 # Read the pretty printed json and format Output, and do what you will with the results
@@ -49,6 +57,5 @@ curl -vvv --silent --location --request GET "$api_url" \
 
 while IFS= read -r line
 do
-  ((linecount++))
-  process_json "$line"
+  process_json_for_projects "$line"
 done < "$projectsfile"
