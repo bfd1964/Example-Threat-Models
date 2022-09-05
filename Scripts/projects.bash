@@ -9,7 +9,7 @@
 #
 # This script uses the jq json processing command line reference https://stedolan.github.io/jq/
 
-apitoken=d6e2d270-35ab-4621-b63d-29ca18b73828;
+apitoken="use your own tonen";
 projectsfile="./projects.json";
 
 function process_json_for_projects() {
