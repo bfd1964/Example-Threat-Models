@@ -1,1 +1,3 @@
 A series of scripts to provide some guidance on accessing particular objects and content related to IriusRisk projects.
+
+The scripts all use a similar framework, and utilise the JQ (https://stedolan.github.io/jq/) command line to process/pretty print the output from the IriusRisk API calls.
